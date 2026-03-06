@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="sonnentaucher – Die Co-Parenting App, die euer Kind in den Mittelpunkt stellt. Profil, Kalender, Übergaben, To-Dos. Für getrennte Eltern, die gemeinsam erziehen.">
+<meta name="theme-color" content="#FBF6F1">
+<title>sonnentaucher – Co-Parenting, kindfokussiert</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800,900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FBF6F1;
+  --text: #2D2A26;
+  --t2: #7A7067;
+  --t3: #B0A89F;
+  --mint: #7FBBAB;
+  --mint-dk: #5FA393;
+  --rose: #C98BA0;
+  --sun: #E8A87C;
+  --papa: #7BA7C9;
+  --mama: #C98BA0;
+  --warm: #D4B483;
+  --glass: rgba(255,255,255,.55);
+  --glass-border: rgba(255,255,255,.35);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Satoshi', system-ui, sans-serif;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 15% 0%, rgba(201,139,160,.09) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 8%, rgba(127,187,171,.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 95%, rgba(232,168,124,.06) 0%, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* Animations */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+.fade-up { opacity: 0; animation: fadeUp .8s cubic-bezier(.16,1,.3,1) forwards; }
+.fade-up-d1 { animation-delay: .1s; }
+.fade-up-d2 { animation-delay: .2s; }
+.fade-up-d3 { animation-delay: .3s; }
+.fade-up-d4 { animation-delay: .4s; }
+.fade-up-d5 { animation-delay: .5s; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(251,246,241,.8);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid rgba(255,255,255,.4);
+  padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 100%;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo h1 { font-size: 20px; font-weight: 800; color: var(--text); letter-spacing: -.5px; }
+.nav-cta {
+  padding: 10px 24px; border-radius: 100px; border: none;
+  background: linear-gradient(135deg, var(--mint), var(--mint-dk));
+  color: #fff; font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700;
+  cursor: pointer; text-decoration: none; transition: all .2s;
+}
+.nav-cta:hover { transform: scale(1.03); box-shadow: 0 4px 16px rgba(127,187,171,.3); }
+
+/* HERO */
+.hero {
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 120px 24px 60px;
+  position: relative;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 16px 6px 8px; border-radius: 100px;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  font-size: 13px; font-weight: 600; color: var(--t2);
+  margin-bottom: 24px;
+  backdrop-filter: blur(12px);
+}
+.hero-badge span { font-size: 16px; }
+.hero h2 {
+  font-size: clamp(36px, 8vw, 64px); font-weight: 900;
+  line-height: 1.05; letter-spacing: -1.5px;
+  max-width: 700px; margin-bottom: 20px;
+}
+.hero h2 .highlight {
+  background: linear-gradient(135deg, var(--mint), var(--sun));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p {
+  font-size: 18px; color: var(--t2); max-width: 520px;
+  line-height: 1.6; margin-bottom: 36px; font-weight: 500;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 18px 40px; border-radius: 100px; border: none;
+  background: linear-gradient(135deg, var(--mint), var(--mint-dk));
+  color: #fff; font-family: 'Satoshi', sans-serif; font-size: 18px; font-weight: 700;
+  cursor: pointer; text-decoration: none; transition: all .25s;
+  box-shadow: 0 6px 24px rgba(127,187,171,.3);
+}
+.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(127,187,171,.35); }
+.hero-sub { font-size: 13px; color: var(--t3); margin-top: 16px; }
+
+/* PHONE MOCKUP */
+.phone-wrap {
+  margin-top: 48px; perspective: 1000px;
+  animation: float 4s ease-in-out infinite;
+}
+.phone {
+  width: 260px; height: 520px; border-radius: 32px;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.04);
+  overflow: hidden; position: relative;
+  transform: rotateY(-5deg) rotateX(3deg);
+}
+.phone-header {
+  padding: 20px 16px 12px; display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+}
+.phone-header-left { display: flex; align-items: center; gap: 6px; }
+.phone-header-left span { font-size: 14px; font-weight: 800; color: var(--text); }
+.phone-child { font-size: 11px; padding: 3px 8px; background: rgba(0,0,0,.04); border-radius: 100px; }
+.phone-body { padding: 12px; }
+.phone-card {
+  background: rgba(255,255,255,.6); border: 1px solid rgba(255,255,255,.5);
+  border-radius: 14px; padding: 12px; margin-bottom: 8px;
+  backdrop-filter: blur(8px);
+}
+.phone-card-title { font-size: 10px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+.phone-card-value { font-size: 13px; font-weight: 600; color: var(--text); }
+.phone-mood { display: flex; gap: 6px; }
+.phone-mood span {
+  width: 28px; height: 28px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; background: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.4);
+}
+.phone-mood span.active { background: rgba(127,187,171,.2); border-color: var(--mint); }
+.phone-tab-bar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  display: flex; padding: 8px 4px 16px;
+  background: rgba(251,246,241,.85); backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255,255,255,.3);
+}
+.phone-tab {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  font-size: 8px; color: var(--t3); font-weight: 500;
+}
+.phone-tab.active { color: var(--mint); font-weight: 700; }
+.phone-tab-dot { width: 18px; height: 18px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+.phone-tab.active .phone-tab-dot { background: rgba(127,187,171,.15); }
+
+/* SECTION COMMON */
+section { padding: 80px 24px; max-width: 900px; margin: 0 auto; }
+.section-label {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--mint); margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(28px, 5vw, 42px); font-weight: 900;
+  line-height: 1.1; letter-spacing: -.8px; margin-bottom: 16px;
+}
+.section-desc {
+  font-size: 17px; color: var(--t2); line-height: 1.7;
+  max-width: 600px; margin-bottom: 40px;
+}
+
+/* FEATURES GRID */
+.features-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.feature-card {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px; padding: 28px 24px;
+  transition: all .25s cubic-bezier(.16,1,.3,1);
+}
+.feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.06); }
+.feature-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 16px;
+}
+.feature-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
+.feature-card p { font-size: 14px; color: var(--t2); line-height: 1.6; }
+
+/* COMPARISON */
+.compare-table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: 20px; overflow: hidden;
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  font-size: 14px;
+}
+.compare-table th {
+  padding: 16px; text-align: left; font-weight: 700;
+  border-bottom: 1px solid rgba(200,180,160,.12);
+  font-size: 12px; text-transform: uppercase; letter-spacing: .5px; color: var(--t3);
+}
+.compare-table th:last-child { color: var(--mint); }
+.compare-table td {
+  padding: 14px 16px; border-bottom: 1px solid rgba(200,180,160,.08);
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { font-weight: 600; color: var(--text); }
+.compare-table td:last-child { color: var(--mint); font-weight: 700; }
+
+/* TESTIMONIAL */
+.testimonial-card {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px); border-radius: 20px;
+  padding: 32px; position: relative; margin-bottom: 16px;
+}
+.testimonial-card::before {
+  content: '"'; position: absolute; top: 16px; left: 24px;
+  font-size: 48px; font-weight: 900; color: var(--mint); opacity: .2; line-height: 1;
+}
+.testimonial-card p { font-size: 16px; line-height: 1.7; color: var(--text); font-style: italic; margin-bottom: 16px; }
+.testimonial-author { font-size: 13px; font-weight: 700; color: var(--t2); }
+.testimonial-role { font-size: 12px; color: var(--t3); }
+
+/* PRICING */
+.pricing-card {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px); border-radius: 24px;
+  padding: 36px; text-align: center; max-width: 400px; margin: 0 auto;
+  position: relative; overflow: hidden;
+}
+.pricing-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--mint), var(--sun), var(--rose));
+}
+.pricing-badge {
+  display: inline-block; padding: 4px 14px; border-radius: 100px;
+  background: rgba(127,187,171,.12); color: var(--mint);
+  font-size: 12px; font-weight: 700; margin-bottom: 16px;
+}
+.pricing-price { font-size: 48px; font-weight: 900; letter-spacing: -2px; }
+.pricing-price span { font-size: 18px; font-weight: 500; color: var(--t3); }
+.pricing-desc { font-size: 14px; color: var(--t2); margin: 12px 0 24px; line-height: 1.5; }
+.pricing-features { list-style: none; text-align: left; margin-bottom: 28px; }
+.pricing-features li {
+  padding: 10px 0; border-bottom: 1px solid rgba(200,180,160,.08);
+  font-size: 14px; display: flex; align-items: center; gap: 10px;
+}
+.pricing-features li::before { content: '✓'; color: var(--mint); font-weight: 800; }
+.pricing-cta {
+  display: block; width: 100%; padding: 18px; border-radius: 14px; border: none;
+  background: linear-gradient(135deg, var(--mint), var(--mint-dk));
+  color: #fff; font-family: 'Satoshi', sans-serif; font-size: 17px; font-weight: 700;
+  cursor: pointer; transition: all .2s;
+  box-shadow: 0 4px 16px rgba(127,187,171,.3);
+}
+.pricing-cta:hover { transform: translateY(-2px); }
+
+/* FINAL CTA */
+.final-cta {
+  text-align: center; padding: 80px 24px 60px;
+  background: linear-gradient(180deg, transparent, rgba(127,187,171,.04));
+}
+.final-cta h2 { font-size: clamp(28px, 5vw, 40px); font-weight: 900; letter-spacing: -.8px; margin-bottom: 16px; }
+.final-cta p { font-size: 17px; color: var(--t2); max-width: 500px; margin: 0 auto 32px; line-height: 1.6; }
+
+/* FOOTER */
+footer {
+  padding: 40px 24px; text-align: center;
+  border-top: 1px solid rgba(200,180,160,.1);
+}
+footer p { font-size: 12px; color: var(--t3); margin-bottom: 8px; }
+footer a { color: var(--t3); text-decoration: none; margin: 0 12px; font-size: 12px; }
+footer a:hover { color: var(--mint); }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .features-grid { grid-template-columns: 1fr; }
+  .compare-table { font-size: 12px; }
+  .compare-table th, .compare-table td { padding: 10px 12px; }
+  section { padding: 60px 20px; }
+  .phone { width: 220px; height: 440px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="13" fill="url(#ns)"/>
+      <ellipse cx="15" cy="19" rx="4.5" ry="3.8" fill="rgba(127,187,171,.25)" stroke="#7FBBAB" stroke-width="1.5"/>
+      <ellipse cx="25" cy="19" rx="4.5" ry="3.8" fill="rgba(127,187,171,.25)" stroke="#7FBBAB" stroke-width="1.5"/>
+      <path d="M19.5 19 C19.8 17.5 20.2 17.5 20.5 19" stroke="#7FBBAB" stroke-width="1.3" fill="none"/>
+      <path d="M16 24 C17.5 26 22.5 26 24 24" stroke="#D4B483" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+      <defs><radialGradient id="ns" cx="50%" cy="40%"><stop offset="0%" stop-color="#F5DCC8"/><stop offset="100%" stop-color="#E8C87C"/></radialGradient></defs>
+    </svg>
+    <h1>sonnentaucher</h1>
+  </a>
+  <a href="#start" class="nav-cta">Kostenlos starten</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge fade-up"><span>☀️</span> Co-Parenting, neu gedacht</div>
+  <h2 class="fade-up fade-up-d1">Euer Kind im <span class="highlight">Mittelpunkt</span>, nicht der Konflikt.</h2>
+  <p class="fade-up fade-up-d2">sonnentaucher ist die Co-Parenting App für getrennte Eltern, die gemeinsam erziehen wollen. Alles was euer Kind betrifft — an einem Ort, für beide sichtbar.</p>
+  <a href="#start" class="hero-cta fade-up fade-up-d3">☀️ Jetzt starten — kostenlos</a>
+  <p class="hero-sub fade-up fade-up-d4">Kein Abo nötig. Kein App Store. Sofort nutzbar.</p>
+
+  <div class="phone-wrap fade-up fade-up-d5">
+    <div class="phone">
+      <div class="phone-header">
+        <div class="phone-header-left">
+          <svg width="18" height="18" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="13" fill="#E8C87C"/><ellipse cx="15" cy="19" rx="4" ry="3.5" stroke="#7FBBAB" stroke-width="1.5" fill="none"/><ellipse cx="25" cy="19" rx="4" ry="3.5" stroke="#7FBBAB" stroke-width="1.5" fill="none"/></svg>
+          <span>Henri</span>
+        </div>
+        <div class="phone-child">🧒 2J 4M</div>
+      </div>
+      <div class="phone-body">
+        <div class="phone-card">
+          <div class="phone-card-title">🌤️ Stimmung</div>
+          <div class="phone-mood">
+            <span class="active">😊</span><span>😢</span><span>😤</span><span>🥱</span><span>🤗</span>
+          </div>
+        </div>
+        <div class="phone-card">
+          <div class="phone-card-title">🥄 Lieblingsessen</div>
+          <div class="phone-card-value">Nudeln mit Pesto, Bananen</div>
+        </div>
+        <div class="phone-card">
+          <div class="phone-card-title">🌙 Schlafenszeit</div>
+          <div class="phone-card-value">19:30 · Buch vorlesen</div>
+        </div>
+        <div class="phone-card">
+          <div class="phone-card-title">🩺 Gesundheit</div>
+          <div class="phone-card-value">Schnupfen seit Di · Nasenspray</div>
+        </div>
+      </div>
+      <div class="phone-tab-bar">
+        <div class="phone-tab active"><div class="phone-tab-dot">👤</div>Profil</div>
+        <div class="phone-tab"><div class="phone-tab-dot">📅</div>Kalender</div>
+        <div class="phone-tab"><div class="phone-tab-dot">🔄</div>Übergabe</div>
+        <div class="phone-tab"><div class="phone-tab-dot">✅</div>To Dos</div>
+        <div class="phone-tab"><div class="phone-tab-dot">📖</div>Wiki</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM/SOLUTION -->
+<section>
+  <div class="section-label">Das Problem</div>
+  <h2 class="section-title">WhatsApp-Chaos, vergessene Infos, Missverständnisse.</h2>
+  <p class="section-desc">Getrennte Eltern kommunizieren über Dutzende Kanäle. Wichtige Infos über das Kind gehen verloren — Essensvorlieben, Arzttermine, Schlafgewohnheiten, Stimmungen. Bei der Übergabe fehlt immer irgendwas.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon" style="background: rgba(212,117,107,.1);">😤</div>
+      <h3>"Das hast du mir nicht gesagt"</h3>
+      <p>Infos gehen in WhatsApp-Threads unter. Keiner weiß mehr, was aktuell ist.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: rgba(232,168,124,.1);">🤷</div>
+      <h3>"Was isst sie gerade gerne?"</h3>
+      <p>Vorlieben ändern sich wöchentlich. Papa weiß es, Mama nicht — oder umgekehrt.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: rgba(123,167,201,.1);">📱</div>
+      <h3>Kalender hier, Notizen dort</h3>
+      <p>TimeTree, Apple Notizen, WhatsApp, Kühlschrank-Zettel. Alles verstreut.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <div class="section-label">Die Lösung</div>
+  <h2 class="section-title">Alles über euer Kind. Ein Ort. Beide Eltern.</h2>
+  <p class="section-desc">sonnentaucher sammelt alles, was euer Kind betrifft, in einem lebendigen Profil — sichtbar für Papa und Mama, immer aktuell.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon" style="background: rgba(127,187,171,.12);">👤</div>
+      <h3>Lebendes Kinderprofil</h3>
+      <p>Stimmung, Essen, Schlaf, Gesundheit, Größen, Routinen — alles an einem Ort. Ändert sich etwas, sehen es beide sofort.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: rgba(123,167,201,.12);">📅</div>
+      <h3>Wechselmodell-Kalender</h3>
+      <p>Custody-Zeiträume per Fingertipp. Übergabe-Tage automatisch erkannt. Termine für das Kind — Papa und Mama sehen dasselbe.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: rgba(232,168,124,.12);">🔄</div>
+      <h3>Übergabe-Briefing</h3>
+      <p>Quick Check-in bei jeder Übergabe: Schlaf, Essen, Stimmung, Besonderes. Countdown zum nächsten Wechsel mit Ort und Zeit.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: rgba(201,139,160,.12);">✅</div>
+      <h3>Geteilte To-Dos</h3>
+      <p>Aufgaben mit Deadline und Zuweisung. Papa übernimmt → blau. Mama → rosa. Erledigt → grün. Verschwindet nach 7 Tagen.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: rgba(212,180,131,.12);">📖</div>
+      <h3>Auto-Wiki</h3>
+      <p>Aus allen Einträgen entsteht automatisch ein Kinderprofil-Kompendium. Plus: Änderungshistorie — wer hat wann was geändert.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background: rgba(176,160,192,.12);">📤</div>
+      <h3>Push statt Echtzeit-Stress</h3>
+      <p>Änderungen sammeln, dann bewusst "Push" senden. Keine Echtzeit-Überwachung — Benachrichtigung wenn es etwas Neues gibt.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section>
+  <div class="section-label">Vergleich</div>
+  <h2 class="section-title">Anders als andere Co-Parenting Apps</h2>
+  <p class="section-desc">Die meisten Apps fokussieren auf Konflikt-Dokumentation und Kommunikation. sonnentaucher fokussiert auf das Kind.</p>
+
+  <table class="compare-table">
+    <tr><th>Feature</th><th>Andere Apps</th><th>sonnentaucher</th></tr>
+    <tr><td>Fokus</td><td>Konflikt & Dokumentation</td><td>Kind & Zusammenarbeit</td></tr>
+    <tr><td>Kinderprofil</td><td>❌ Nicht vorhanden</td><td>✅ Lebendes Wiki</td></tr>
+    <tr><td>Stimmungen & Phasen</td><td>❌</td><td>✅ Mood-Tracking</td></tr>
+    <tr><td>Übergabe-Briefing</td><td>Teilweise</td><td>✅ Quick Check-in</td></tr>
+    <tr><td>Custody-Kalender</td><td>✅ Komplex</td><td>✅ Simpel: Tippen</td></tr>
+    <tr><td>PDF-Export</td><td>Kostenpflichtig</td><td>✅ Inklusive</td></tr>
+    <tr><td>Multi-Kind / Multi-Familie</td><td>Teilweise</td><td>✅ Unbegrenzt</td></tr>
+    <tr><td>Preis</td><td>€6–10/Monat</td><td>Kostenlos</td></tr>
+    <tr><td>Design</td><td>Funktional</td><td>✅ Vintage Pastell</td></tr>
+  </table>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-label">Stimmen</div>
+  <h2 class="section-title">Was Eltern sagen</h2>
+  <div class="testimonial-card">
+    <p>Endlich weiß ich bei der Übergabe, wie die Woche war. Nicht weil wir drüber reden mussten, sondern weil alles schon in der App steht.</p>
+    <div class="testimonial-author">Thomas, Papa</div>
+    <div class="testimonial-role">Wechselmodell seit 2024</div>
+  </div>
+  <div class="testimonial-card">
+    <p>Die Stimmungs-Erfassung hat uns geholfen zu verstehen, dass Henri bei Übergängen immer müde ist. Das hätten wir ohne sonnentaucher nie gemerkt.</p>
+    <div class="testimonial-author">Ann-Catrin, Mama</div>
+    <div class="testimonial-role">Getrennt seit 2023</div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="start">
+  <div class="section-label">Starten</div>
+  <h2 class="section-title">Kostenlos. Für immer.</h2>
+  <p class="section-desc">sonnentaucher ist kostenlos nutzbar. Alle Features, keine Limits, kein Abo.</p>
+
+  <div class="pricing-card">
+    <div class="pricing-badge">Aktuell</div>
+    <div class="pricing-price">€0 <span>/Monat</span></div>
+    <p class="pricing-desc">Voller Zugang für beide Eltern</p>
+    <ul class="pricing-features">
+      <li>Unbegrenzte Kinder & Familien</li>
+      <li>Kinderprofil mit Wiki</li>
+      <li>Wechselmodell-Kalender</li>
+      <li>Übergabe-Briefings</li>
+      <li>To-Dos mit Zuweisung</li>
+      <li>Push-Benachrichtigungen</li>
+      <li>PDF-Export</li>
+      <li>Meilensteine</li>
+      <li>DSGVO-konform</li>
+    </ul>
+    <a href="https://sonnentaucher-git-main-schluesselkinds-projects.vercel.app" class="pricing-cta">Jetzt starten ☀️</a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Gemeinsam eintauchen in alles, was euer Kind betrifft.</h2>
+  <p>Kein Download. Kein App Store. Einfach öffnen, anmelden, loslegen — in unter 2 Minuten.</p>
+  <a href="https://sonnentaucher-git-main-schluesselkinds-projects.vercel.app" class="hero-cta">☀️ Kostenlos starten</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>sonnentaucher — ein Dienst der Frerich United Ventures GmbH</p>
+  <div>
+    <a href="https://sonnentaucher-git-main-schluesselkinds-projects.vercel.app">App öffnen</a>
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+  </div>
+  <p style="margin-top: 12px;">An der Ronne 48, 50859 Köln · HRB 112376</p>
+</footer>
+
+</body>
+</html>
