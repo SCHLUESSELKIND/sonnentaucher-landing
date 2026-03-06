@@ -21,10 +21,11 @@
 :root{--bg:#FBF6F1;--text:#2D2A26;--t2:#7A7067;--t3:#B0A89F;--mint:#7FBBAB;--mint-dk:#5FA393;--rose:#C98BA0;--sun:#E8A87C;--papa:#7BA7C9;--warm:#D4B483;--glass:rgba(255,255,255,.5);--glass-b:rgba(255,255,255,.35);--d:'Cabinet Grotesk',system-ui,sans-serif;--b:'Satoshi',system-ui,sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:var(--b);background:var(--bg);background-image:radial-gradient(ellipse at 15% 0%,rgba(201,139,160,.09) 0%,transparent 50%),radial-gradient(ellipse at 85% 8%,rgba(127,187,171,.08) 0%,transparent 50%),radial-gradient(ellipse at 50% 95%,rgba(232,168,124,.06) 0%,transparent 50%);background-attachment:fixed;color:var(--text);overflow-x:hidden}
-#sun-intro{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .6s,visibility .6s}
+#sun-intro{position:fixed;inset:0;z-index:9999;background:#FAF4ED;background-image:radial-gradient(ellipse at 50% 40%,rgba(212,180,131,.08) 0%,transparent 60%);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 1s ease,visibility 1s ease}
 #sun-intro.hidden{opacity:0;visibility:hidden;pointer-events:none}
-#sun-intro svg{animation:sunSpin 2s cubic-bezier(.16,1,.3,1) forwards}
-#sun-intro p{font-family:var(--d);font-size:22px;font-weight:800;color:var(--text);margin-top:20px;letter-spacing:-.5px;opacity:0;animation:fadeIn .5s ease .8s forwards}
+#sun-intro svg{animation:sunSpin 2.4s cubic-bezier(.16,1,.3,1) forwards;filter:saturate(.6) sepia(.15) brightness(1.05)}
+#sun-intro .intro-title{font-family:var(--d);font-size:36px;font-weight:900;letter-spacing:-1.5px;margin-top:24px;opacity:0;animation:fadeIn .8s ease 1.2s forwards;color:#C4B5A3}
+#sun-intro .intro-sub{font-family:var(--b);font-size:14px;font-weight:500;color:#D0C4B6;margin-top:8px;opacity:0;animation:fadeIn .6s ease 1.6s forwards;letter-spacing:-.2px}
 @keyframes sunSpin{0%{transform:scale(0) rotate(-180deg);opacity:0}60%{transform:scale(1.15) rotate(10deg);opacity:1}100%{transform:scale(1) rotate(0deg);opacity:1}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
@@ -118,24 +119,43 @@ footer a:hover{color:var(--mint)}
 </head>
 <body>
 <div id="sun-intro">
-<svg width="80" height="80" viewBox="0 0 40 40" fill="none">
-<line x1="20" y1="1" x2="20" y2="4" stroke="#E8C87C" stroke-width="1.2" stroke-linecap="round" opacity=".4" style="animation:rayPulse 2s ease infinite"/>
-<line x1="20" y1="36" x2="20" y2="39" stroke="#E8C87C" stroke-width="1.2" stroke-linecap="round" opacity=".4" style="animation:rayPulse 2s ease .25s infinite"/>
-<line x1="1" y1="20" x2="4" y2="20" stroke="#E8C87C" stroke-width="1.2" stroke-linecap="round" opacity=".4" style="animation:rayPulse 2s ease .5s infinite"/>
-<line x1="36" y1="20" x2="39" y2="20" stroke="#E8C87C" stroke-width="1.2" stroke-linecap="round" opacity=".4" style="animation:rayPulse 2s ease .75s infinite"/>
-<line x1="6.3" y1="6.3" x2="8.1" y2="8.1" stroke="#E8C87C" stroke-width="1.2" stroke-linecap="round" opacity=".4" style="animation:rayPulse 2s ease 1s infinite"/>
-<line x1="31.9" y1="31.9" x2="33.7" y2="33.7" stroke="#E8C87C" stroke-width="1.2" stroke-linecap="round" opacity=".4" style="animation:rayPulse 2s ease 1.25s infinite"/>
-<line x1="6.3" y1="33.7" x2="8.1" y2="31.9" stroke="#E8C87C" stroke-width="1.2" stroke-linecap="round" opacity=".4" style="animation:rayPulse 2s ease 1.5s infinite"/>
-<line x1="31.9" y1="8.1" x2="33.7" y2="6.3" stroke="#E8C87C" stroke-width="1.2" stroke-linecap="round" opacity=".4" style="animation:rayPulse 2s ease 1.75s infinite"/>
-<circle cx="20" cy="20" r="13" fill="url(#si_sun)"/>
-<path d="M8 17.5 C8 17.5 12 15 20 15 C28 15 32 17.5 32 17.5" stroke="#C98BA0" stroke-width="1.8" stroke-linecap="round" fill="none" opacity=".65"/>
-<ellipse cx="15" cy="19" rx="4.5" ry="3.8" fill="rgba(127,187,171,.22)" stroke="#7FBBAB" stroke-width="1.5"/>
-<ellipse cx="25" cy="19" rx="4.5" ry="3.8" fill="rgba(127,187,171,.22)" stroke="#7FBBAB" stroke-width="1.5"/>
-<path d="M19.5 19 C19.8 17.5 20.2 17.5 20.5 19" stroke="#7FBBAB" stroke-width="1.3" fill="none"/>
-<path d="M16 24 C17.5 26 22.5 26 24 24" stroke="#D4B483" stroke-width="1.3" stroke-linecap="round" fill="none"/>
-<defs><radialGradient id="si_sun" cx="50%" cy="40%"><stop offset="0%" stop-color="#F5DCC8"/><stop offset="100%" stop-color="#E8C87C"/></radialGradient></defs>
+<svg width="160" height="170" viewBox="0 0 50 53" fill="none">
+<!-- Rays -->
+<line x1="25" y1="1" x2="25" y2="5" stroke="#D4B483" stroke-width="1" stroke-linecap="round" opacity=".3" style="animation:rayPulse 2.5s ease infinite"/>
+<line x1="25" y1="45" x2="25" y2="49" stroke="#D4B483" stroke-width="1" stroke-linecap="round" opacity=".3" style="animation:rayPulse 2.5s ease .3s infinite"/>
+<line x1="1" y1="25" x2="5" y2="25" stroke="#D4B483" stroke-width="1" stroke-linecap="round" opacity=".3" style="animation:rayPulse 2.5s ease .6s infinite"/>
+<line x1="45" y1="25" x2="49" y2="25" stroke="#D4B483" stroke-width="1" stroke-linecap="round" opacity=".3" style="animation:rayPulse 2.5s ease .9s infinite"/>
+<line x1="8" y1="8" x2="10.5" y2="10.5" stroke="#D4B483" stroke-width="1" stroke-linecap="round" opacity=".3" style="animation:rayPulse 2.5s ease 1.2s infinite"/>
+<line x1="39.5" y1="39.5" x2="42" y2="42" stroke="#D4B483" stroke-width="1" stroke-linecap="round" opacity=".3" style="animation:rayPulse 2.5s ease 1.5s infinite"/>
+<line x1="8" y1="42" x2="10.5" y2="39.5" stroke="#D4B483" stroke-width="1" stroke-linecap="round" opacity=".3" style="animation:rayPulse 2.5s ease 1.8s infinite"/>
+<line x1="39.5" y1="10.5" x2="42" y2="8" stroke="#D4B483" stroke-width="1" stroke-linecap="round" opacity=".3" style="animation:rayPulse 2.5s ease 2.1s infinite"/>
+<!-- Sun body -->
+<circle cx="25" cy="25" r="16" fill="url(#si_sun2)"/>
+<!-- Subtle texture ring -->
+<circle cx="25" cy="25" r="15" fill="none" stroke="#D4B483" stroke-width=".3" opacity=".2"/>
+<!-- Snorkel tube -->
+<path d="M36 12 C36 12 38 11 39 8 C40 5 38 3 36 3 C34 3 33 4.5 33 6" stroke="#9DBFB2" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".7"/>
+<!-- Snorkel mouthpiece -->
+<ellipse cx="33.5" cy="7" rx="1.2" ry=".7" fill="#9DBFB2" opacity=".4"/>
+<!-- Goggles band -->
+<path d="M10 22 C10 22 15 19 25 19 C35 19 40 22 40 22" stroke="#D4A8B0" stroke-width="1.4" stroke-linecap="round" fill="none" opacity=".45"/>
+<!-- Left lens -->
+<ellipse cx="19" cy="24" rx="5.5" ry="4.5" fill="rgba(157,191,178,.12)" stroke="#9DBFB2" stroke-width="1.3"/>
+<ellipse cx="19" cy="24" rx="3.5" ry="2.8" fill="rgba(157,191,178,.05)"/>
+<!-- Right lens -->
+<ellipse cx="31" cy="24" rx="5.5" ry="4.5" fill="rgba(157,191,178,.12)" stroke="#9DBFB2" stroke-width="1.3"/>
+<ellipse cx="31" cy="24" rx="3.5" ry="2.8" fill="rgba(157,191,178,.05)"/>
+<!-- Bridge -->
+<path d="M24.5 24 C24.8 22 25.2 22 25.5 24" stroke="#9DBFB2" stroke-width="1.1" fill="none"/>
+<!-- Smile -->
+<path d="M20 30 C22 32.5 28 32.5 30 30" stroke="#D4B483" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".7"/>
+<!-- Cheek blush -->
+<circle cx="14" cy="28" r="2" fill="#D4A8B0" opacity=".1"/>
+<circle cx="36" cy="28" r="2" fill="#D4A8B0" opacity=".1"/>
+<defs><radialGradient id="si_sun2" cx="50%" cy="38%"><stop offset="0%" stop-color="#F2E4D4"/><stop offset="60%" stop-color="#E8D0A8"/><stop offset="100%" stop-color="#D4B483"/></radialGradient></defs>
 </svg>
-<p>sonnentaucher</p>
+<span class="intro-title">sonnentaucher</span>
+<span class="intro-sub">Alles über euer Kind an einem Ort.</span>
 </div>
 <nav>
 <a href="#" class="nav-logo">
@@ -146,8 +166,8 @@ footer a:hover{color:var(--mint)}
 </nav>
 <section class="hero">
 <div class="hero-badge fade-up">☀️ The Parenting App</div>
-<h2 class="fade-up d1">Euer Kind im <span class="hl">Mittelpunkt</span>.</h2>
-<p class="fade-up d2">Die Parenting App für alle, die sich um euer Kind kümmern. Eltern, Großeltern, Betreuer. Alles über euer Kind — an einem Ort, für beide sichtbar.</p>
+<h2 class="fade-up d1">Alles über euer Kind.<br>An <span class="hl">einem Ort</span>.</h2>
+<p class="fade-up d2">Für Eltern, Großeltern und alle die es betreuen — immer aktuell, immer sichtbar.</p>
 <a href="#start" class="hero-cta fade-up d3">Jetzt starten — kostenlos</a>
 <p class="hero-sub fade-up d4">Kein Download. Kein Abo. Sofort nutzbar.</p>
 <div class="phone-wrap fade-up d5">
@@ -361,7 +381,7 @@ footer a:hover{color:var(--mint)}
 </div>
 </div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-setTimeout(()=>{document.getElementById('sun-intro').classList.add('hidden')},2200);
+setTimeout(()=>{document.getElementById('sun-intro').classList.add('hidden')},3400);
 const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.style.animation='fadeUp .7s cubic-bezier(.16,1,.3,1) forwards';obs.unobserve(e.target)}})},{threshold:.15});
 document.querySelectorAll('.feat,.demo-step,.price-card').forEach(el=>{el.style.opacity='0';obs.observe(el)});
 
