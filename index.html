@@ -17,17 +17,17 @@
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:var(--b);overflow-x:hidden;transition:background .6s,color .6s}
 @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@keyframes introZoom{0%{opacity:0;transform:scale(.4) rotate(-12deg)}40%{opacity:1;transform:scale(1.08) rotate(3deg)}60%{transform:scale(.96) rotate(-1deg)}100%{transform:scale(1) rotate(0)}}
-@keyframes introTitle{0%{opacity:0;letter-spacing:12px}60%{opacity:1;letter-spacing:4px}100%{opacity:1;letter-spacing:1px}}
+@keyframes introZoom{0%{opacity:0;transform:scale(.3) rotate(-15deg)}40%{opacity:1;transform:scale(1.1) rotate(4deg)}60%{transform:scale(.95) rotate(-1deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes introTitle{0%{opacity:0;letter-spacing:18px}60%{opacity:1;letter-spacing:5px}100%{opacity:1;letter-spacing:1.5px}}
 @keyframes introSub{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-@keyframes introLine{from{width:0}to{width:80px}}
+@keyframes introLine{from{width:0}to{width:120px}}
 @keyframes introOut{to{opacity:0;visibility:hidden;pointer-events:none}}
 
-#intro{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0;animation:introOut .8s ease 6s forwards}
-#intro img{animation:introZoom 1.8s cubic-bezier(.16,1,.3,1) forwards}
-#intro .it{font-family:var(--s);font-size:clamp(28px,7vw,42px);font-weight:900;font-style:italic;opacity:0;animation:introTitle 1.2s ease .8s forwards}
-#intro .is{font-family:var(--h);font-size:clamp(14px,3.5vw,18px);opacity:0;animation:introSub .7s ease 1.8s forwards}
-#intro .il{height:2px;width:0;border-radius:1px;margin:12px auto 0;animation:introLine .6s ease 2.5s forwards}
+#intro{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;animation:introOut .8s ease 6s forwards}
+#intro img{width:160px;height:160px;animation:introZoom 1.8s cubic-bezier(.16,1,.3,1) forwards}
+#intro .it{font-family:var(--s);font-size:clamp(38px,10vw,64px);font-weight:900;font-style:italic;opacity:0;animation:introTitle 1.2s ease .8s forwards}
+#intro .is{font-family:var(--h);font-size:clamp(18px,4.5vw,26px);opacity:0;animation:introSub .7s ease 1.8s forwards}
+#intro .il{height:3px;width:0;border-radius:2px;margin:16px auto 0;animation:introLine .6s ease 2.5s forwards}
 .fu{opacity:0;animation:fu .7s ease forwards}
 .d1{animation-delay:5.7s}.d2{animation-delay:5.9s}.d3{animation-delay:6.1s}.d4{animation-delay:6.3s}
 
@@ -119,7 +119,7 @@ footer a{opacity:.35;text-decoration:none;margin:0 8px;font-size:10px}
 <body>
 
 <div id="intro">
-<img src="https://app.sonnentaucher.app/logo-256.png" alt="" width="120" height="120" style="filter:drop-shadow(0 8px 24px rgba(0,0,0,.08))">
+<img src="https://app.sonnentaucher.app/logo-256.png" alt="" width="160" height="160" style="filter:drop-shadow(0 12px 40px rgba(0,0,0,.1))">
 <div class="it" id="intro-t">sonnentaucher</div>
 <div class="is" id="intro-s">The Parenting App</div>
 <div class="il" id="intro-l"></div>
