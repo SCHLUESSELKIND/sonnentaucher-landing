@@ -3,542 +3,286 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="sonnentaucher – Alles über euer Kind. Für Eltern, Großeltern & Betreuer.">
+<meta name="description" content="sonnentaucher – Alles über euer Kind. Für Eltern, Großeltern und Betreuer.">
 <meta name="theme-color" content="#F5EDE3">
-<meta property="og:title" content="sonnentaucher – The Parenting App" />
-<meta property="og:description" content="Alles über euer Kind. Für Eltern, Großeltern & Betreuer." />
-<meta property="og:image" content="https://app.sonnentaucher.app/icon-512.png" />
-<meta property="og:url" content="https://sonnentaucher.app" />
-<meta property="og:type" content="website" />
+<meta property="og:title" content="sonnentaucher – The Parenting App">
+<meta property="og:description" content="Alles über euer Kind. Für Eltern, Großeltern und Betreuer.">
+<meta property="og:image" content="https://app.sonnentaucher.app/icon-512.png">
+<meta property="og:url" content="https://sonnentaucher.app">
 <title>sonnentaucher – The Parenting App</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F5EDE3;--cream:#FEFBF6;--surface:rgba(254,251,246,.85);--azure:#5B8FA8;--azure-lt:#A8CCD9;--terra:#C47852;--coral:#D4847A;--navy:#2D3E50;--gold:#BFA16C;--green:#6B9A7A;--linen:#F0E8DB;--text:#3A3028;--t2:#7A6E5F;--t3:#A89D8E;--border:rgba(45,62,80,.08);--serif:'Fraunces',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--hand:'Caveat',cursive}
+:root{--s:'Fraunces',Georgia,serif;--b:'DM Sans',system-ui,sans-serif;--h:'Caveat',cursive}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;transition:background-color .8s ease}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes sunSpin{0%{transform:scale(0) rotate(-180deg);opacity:0}60%{transform:scale(1.1) rotate(8deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes pulse{0%,100%{opacity:.6}50%{opacity:1}}
-.fu{opacity:0;animation:fadeUp .7s ease forwards}
-.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.35s}.d4{animation-delay:.5s}.d5{animation-delay:.65s}
+body{font-family:var(--b);overflow-x:hidden;transition:background .6s,color .6s}
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.fu{opacity:0;animation:fu .7s ease forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}
 
-/* Intro */
-#intro{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .8s,visibility .8s}
-#intro.gone{opacity:0;visibility:hidden;pointer-events:none}
-#intro>svg{animation:sunSpin 2s cubic-bezier(.16,1,.3,1) forwards}
-#intro .t{font-family:var(--serif);font-size:38px;font-weight:900;font-style:italic;margin-top:20px;opacity:0;animation:fadeIn .7s ease .9s forwards}
-#intro .s{font-family:var(--hand);font-size:19px;margin-top:6px;opacity:0;animation:fadeIn .5s ease 1.3s forwards}
-
-/* Nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;transition:background .4s}
-.nav-bg{background:rgba(245,237,227,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-nav h1{font-family:var(--serif);font-size:17px;font-weight:700;font-style:italic;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:11px 24px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 nav a{text-decoration:none}
+nav h1{font-family:var(--s);font-size:18px;font-weight:700;font-style:italic}
 .nb{display:flex;gap:6px}
-.btn-ghost{padding:9px 18px;border-radius:100px;border:1.5px solid rgba(45,62,80,.1);background:transparent;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s}
-.btn-ghost:hover{background:rgba(0,0,0,.03)}
-.btn-solid{padding:9px 20px;border-radius:100px;border:none;font-family:var(--serif);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}
-.btn-solid:hover{transform:scale(1.03)}
-.btn-big{padding:18px 40px;border-radius:100px;border:none;font-family:var(--serif);font-size:17px;font-weight:700;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:10px}
-.btn-big:hover{transform:translateY(-2px)}
+.bl{padding:9px 18px;border-radius:100px;font-family:var(--b);font-size:13px;font-weight:600;cursor:pointer}
+.bs{padding:9px 20px;border-radius:100px;border:none;font-family:var(--s);font-size:13px;font-weight:700;cursor:pointer}
+.bs:hover{transform:scale(1.03)}
+.bb{padding:18px 40px;border-radius:100px;border:none;font-family:var(--s);font-size:17px;font-weight:700;cursor:pointer;display:inline-block;text-decoration:none}
+.bb:hover{transform:translateY(-2px)}
 
-/* Hero */
-.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:110px 24px 40px}
-.hero-pill{font-family:var(--hand);font-size:17px;margin-bottom:24px}
-.hero h2{font-family:var(--serif);font-size:clamp(36px,8vw,64px);font-weight:900;line-height:1.05;max-width:680px;margin-bottom:16px}
-.hero h2 em{font-style:italic}
-.hero>p{font-size:17px;line-height:1.65;max-width:460px;margin-bottom:32px}
-.hero-note{font-family:var(--hand);font-size:15px;margin-top:12px}
+.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 48px}
+.logo-sun{font-size:64px;margin-bottom:16px;display:block;filter:drop-shadow(0 4px 12px rgba(232,200,124,.3))}
+.hero h2{font-family:var(--s);font-size:clamp(34px,8vw,60px);font-weight:900;line-height:1.05;max-width:640px;margin-bottom:14px}
+.hero>p{font-size:17px;line-height:1.65;max-width:430px;margin-bottom:30px}
+.hero-note{font-family:var(--h);font-size:15px;margin-top:12px}
 
-/* Phone */
-.phone-wrap{margin-top:40px;animation:float 5s ease-in-out infinite}
-.phone{width:255px;height:510px;border-radius:30px;overflow:hidden;position:relative;background:#FEFBF6;border:1px solid rgba(45,62,80,.06);box-shadow:0 20px 60px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.03)}
-.ph-head{padding:14px 12px 9px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(45,62,80,.06);color:#2D3E50}
-.ph-head b{font-family:var(--serif);font-size:14px;font-weight:700;color:#2D3E50}
-.ph-head span{font-family:var(--hand);font-size:12px;color:#C47852}
-.ph-body{padding:8px;height:370px;overflow:hidden}
-.ph-card{border-radius:11px;padding:10px;margin-bottom:5px;background:rgba(254,251,246,.6);border:1px solid rgba(45,62,80,.05)}
-.ph-label{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;color:#A89D8E}
-.ph-val{font-size:11px;font-weight:500;color:#2D3E50}
-.ph-moods{display:flex;gap:3px}
-.ph-moods span{width:24px;height:24px;border-radius:5px;font-size:12px;display:flex;align-items:center;justify-content:center;transition:background .3s,border-color .3s}
-.ds{display:none}.ds.on{display:block;animation:fadeIn .35s ease}
-.ph-tabs{position:absolute;bottom:0;left:0;right:0;display:flex;padding:5px 3px 12px;background:rgba(240,232,219,.92)}
-.ph-tab{flex:1;text-align:center;font-size:6px;font-weight:600;cursor:pointer;color:#A89D8E;transition:all .2s}
-.ph-tab.on{color:#5B8FA8}
-.ph-tab div{font-size:11px;margin-bottom:1px}
-.live-dot{width:6px;height:6px;border-radius:3px;animation:pulse 2s ease infinite;display:inline-block;margin-right:4px}
+section{padding:60px 24px;max-width:840px;margin:0 auto}
+.sl{font-family:var(--s);font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px}
+.st{font-family:var(--s);font-size:clamp(24px,5vw,36px);font-weight:900;line-height:1.1;margin-bottom:10px}
+.sd{font-size:16px;line-height:1.7;max-width:500px;margin-bottom:24px}
 
-/* Sections */
-section{padding:72px 24px;max-width:880px;margin:0 auto}
-.sl{font-family:var(--serif);font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px}
-.st{font-family:var(--serif);font-size:clamp(26px,5vw,40px);font-weight:900;line-height:1.1;margin-bottom:14px}
-.sd{font-size:16px;line-height:1.7;max-width:540px;margin-bottom:32px}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:11px}
+.fc{border-radius:14px;padding:20px 16px}
+.fc:hover{transform:translateY(-2px)}
+.fc .ico{font-size:24px;margin-bottom:6px}
+.fc h3{font-family:var(--s);font-size:14px;font-weight:700;margin-bottom:3px}
+.fc p{font-size:12px;line-height:1.55}
 
-/* Features */
-.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-.fc{border-radius:16px;padding:22px 18px;transition:all .25s}
-.fc:hover{transform:translateY(-3px)}
-.fc .ico{font-size:28px;margin-bottom:10px}
-.fc h3{font-family:var(--serif);font-size:15px;font-weight:700;margin-bottom:5px}
-.fc p{font-size:13px;line-height:1.6;opacity:.7}
+/* APP SHOWCASE — horizontal scroll cards */
+.showcase{display:flex;gap:14px;overflow-x:auto;padding:8px 0 16px;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
+.showcase::-webkit-scrollbar{height:0}
+.sc{min-width:220px;max-width:260px;border-radius:16px;padding:16px;scroll-snap-align:start;flex-shrink:0}
+.sc-head{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-bottom:8px}
+.sc-head .e{font-size:20px}
+.sc-head .t{font-family:var(--s);font-size:13px;font-weight:700}
+.sc-row{display:flex;align-items:center;gap:8px;padding:7px 0}
+.sc-dot{width:6px;height:6px;border-radius:3px;flex-shrink:0}
+.sc-val{font-size:11px;font-weight:500}
+.sc-sub{font-size:9px;opacity:.5;margin-top:1px}
+.sc-chip{display:inline-block;padding:3px 8px;border-radius:6px;font-size:9px;font-weight:600;margin:2px 2px 2px 0}
+.sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.sc-tile{border-radius:8px;padding:8px;text-align:center}
+.sc-tile .e{font-size:18px}
+.sc-tile .l{font-size:8px;font-weight:700;margin-top:2px;text-transform:uppercase;letter-spacing:.3px}
 
-/* Steps */
-.steps{display:flex;flex-direction:column;gap:12px}
-.step{display:flex;align-items:flex-start;gap:16px;border-radius:16px;padding:20px;transition:all .25s}
+.steps{display:flex;flex-direction:column;gap:10px}
+.step{display:flex;align-items:flex-start;gap:14px;border-radius:14px;padding:16px}
 .step:hover{transform:translateX(3px)}
-.step-n{width:36px;height:36px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;font-weight:900;color:#fff}
-.step h3{font-family:var(--serif);font-size:14px;font-weight:700;margin-bottom:2px}
-.step p{font-size:13px;line-height:1.5;opacity:.7}
-.step .tm{font-family:var(--hand);font-size:13px;margin-top:3px}
+.step-n{width:32px;height:32px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--s);font-size:14px;font-weight:900;color:#fff}
+.step h3{font-family:var(--s);font-size:13px;font-weight:700;margin-bottom:1px}
+.step p{font-size:12px;line-height:1.5}
+.step .tm{font-family:var(--h);font-size:12px;margin-top:2px}
 
-/* Social proof */
-.proof{text-align:center;padding:48px 24px}
-.proof-nums{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
-.proof-n{font-family:var(--serif);font-size:36px;font-weight:900}
-.proof-l{font-size:12px;font-weight:600;opacity:.5;margin-top:2px}
+.stripe{height:3px;border-radius:2px;max-width:140px;margin:0 auto;opacity:.3}
 
-/* Pricing */
-.pricing{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;max-width:740px;margin:0 auto}
-.pc{flex:1;min-width:270px;border-radius:18px;padding:32px 24px;text-align:center;position:relative;overflow:hidden;transition:all .3s}
-.pc:hover{transform:translateY(-3px)}
-.pc .tag{display:inline-block;padding:3px 12px;border-radius:100px;font-family:var(--serif);font-size:11px;font-weight:700;margin-bottom:10px}
-.pc .num{font-family:var(--serif);font-size:48px;font-weight:900;letter-spacing:-2px}
-.pc .num span{font-size:15px;font-weight:400;opacity:.5}
-.pc .desc{font-size:13px;margin:6px 0 18px;opacity:.6}
-.pc ul{list-style:none;text-align:left;margin-bottom:20px}
-.pc li{padding:7px 0;border-bottom:1px solid rgba(0,0,0,.04);font-size:12px;display:flex;align-items:center;gap:8px}
-.pc li::before{content:'✓';font-weight:800;font-size:13px}
-.pc .act{display:block;width:100%;padding:15px;border-radius:11px;border:none;font-family:var(--serif);font-size:15px;font-weight:700;cursor:pointer;transition:all .2s}
+.pricing{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;max-width:640px;margin:0 auto}
+.pc{flex:1;min-width:250px;border-radius:16px;padding:26px 20px;text-align:center;position:relative;overflow:hidden}
+.pc .tag{display:inline-block;padding:3px 10px;border-radius:100px;font-family:var(--s);font-size:10px;font-weight:700;margin-bottom:6px}
+.pc .num{font-family:var(--s);font-size:40px;font-weight:900;letter-spacing:-2px}
+.pc .num span{font-size:13px;font-weight:400;opacity:.5}
+.pc .desc{font-size:12px;margin:4px 0 14px;opacity:.6}
+.pc ul{list-style:none;text-align:left;margin-bottom:14px}
+.pc li{padding:5px 0;font-size:11px;display:flex;align-items:center;gap:7px}
+.pc li::before{content:'✓';font-weight:800;font-size:11px}
+.pc .act{display:block;width:100%;padding:13px;border-radius:10px;border:none;font-family:var(--s);font-size:14px;font-weight:700;cursor:pointer;text-decoration:none}
 
-/* CTA final */
-.final{text-align:center;padding:72px 24px 56px}
-.final h2{font-family:var(--serif);font-size:clamp(24px,5vw,36px);font-weight:900;font-style:italic;margin-bottom:10px}
-.final>p{font-family:var(--hand);font-size:18px;margin-bottom:28px;max-width:440px;margin-left:auto;margin-right:auto}
+.final{text-align:center;padding:56px 24px 40px}
+.final h2{font-family:var(--s);font-size:clamp(22px,4.5vw,32px);font-weight:900;font-style:italic;margin-bottom:8px}
+.final>p{font-family:var(--h);font-size:16px;margin-bottom:22px;max-width:380px;margin-left:auto;margin-right:auto}
 
-/* Stripe decoration */
-.stripe{height:3px;border-radius:2px;max-width:180px;margin:0 auto;opacity:.35}
+footer{padding:28px 24px;text-align:center}
+footer p{font-size:10px;opacity:.35;margin-bottom:3px}
+footer a{opacity:.35;text-decoration:none;margin:0 8px;font-size:10px}
 
-/* Footer */
-footer{padding:36px 24px;text-align:center;border-top:1px solid var(--border)}
-footer p{font-size:11px;opacity:.4;margin-bottom:4px}
-footer a{opacity:.4;text-decoration:none;margin:0 10px;font-size:11px}
-footer a:hover{opacity:.7}
-
-@media(max-width:600px){.fg{grid-template-columns:1fr}.pricing{flex-direction:column;align-items:center}.pc{min-width:auto;width:100%}section{padding:56px 20px}.phone{width:220px;height:440px}.ph-body{height:310px}.step{flex-direction:column;gap:10px}.proof-nums{gap:24px}}
+@media(max-width:600px){.fg{grid-template-columns:1fr}.pricing{flex-direction:column}.pc{min-width:auto}section{padding:44px 20px}.step{flex-direction:column;gap:8px}.showcase{padding-left:20px}}
 </style>
 </head>
 <body>
 
-<!-- INTRO -->
-<div id="intro">
-<svg width="140" height="140" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="50" cy="50" r="46" stroke="#2D3E50" stroke-width="1.5" fill="none"/>
-<circle cx="50" cy="50" r="43" stroke="#2D3E50" stroke-width=".4" fill="none" opacity=".2"/>
-<circle cx="50" cy="44" r="18" fill="#F0D8B0"/>
-<circle cx="50" cy="44" r="16.5" fill="#E8C87C"/>
-<path d="M65 34 C66 31 67 27 66 24 C65 22 63 21 61 22" stroke="#5B8FA8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-<path d="M36 42 C36 42 41 39 50 39 C59 39 64 42 64 42" stroke="#D4847A" stroke-width="1.3" stroke-linecap="round" fill="none" opacity=".45"/>
-<ellipse cx="44" cy="44" rx="6.5" ry="5.5" fill="#5B8FA8" fill-opacity=".08" stroke="#5B8FA8" stroke-width="1.3"/>
-<ellipse cx="56" cy="44" rx="6.5" ry="5.5" fill="#5B8FA8" fill-opacity=".08" stroke="#5B8FA8" stroke-width="1.3"/>
-<path d="M45 52 C47 55 53 55 55 52" stroke="#BFA16C" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-</svg>
-<span class="t"></span>
-<span class="s"></span>
-</div>
-
-<!-- NAV -->
 <nav id="nav">
-<a href="#" style="display:flex;align-items:center;gap:8px;text-decoration:none">
-<svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="50" cy="50" r="46" stroke="#2D3E50" stroke-width="3" fill="none"/>
-<circle cx="50" cy="44" r="18" fill="#E8C87C"/>
-<path d="M65 34 C66 31 67 27 66 24 C65 22 63 21 61 22" stroke="#5B8FA8" stroke-width="3" stroke-linecap="round" fill="none"/>
-<ellipse cx="44" cy="44" rx="7" ry="6" fill="#5B8FA8" fill-opacity=".1" stroke="#5B8FA8" stroke-width="2.5"/>
-<ellipse cx="56" cy="44" rx="7" ry="6" fill="#5B8FA8" fill-opacity=".1" stroke="#5B8FA8" stroke-width="2.5"/>
-<path d="M45 53 C47 56 53 56 55 53" stroke="#BFA16C" stroke-width="2" stroke-linecap="round" fill="none"/>
-</svg>
-<h1 id="nav-title"></h1>
-</a>
+<a href="#" style="display:flex;align-items:center;gap:8px"><span style="font-size:20px">☀️</span><h1 id="nt">sonnentaucher</h1></a>
 <div class="nb">
-<a href="https://app.sonnentaucher.app" class="btn-ghost" id="nav-login">Log in</a>
-<a href="https://app.sonnentaucher.app" class="btn-solid" id="nav-cta">Ausprobieren</a>
+<a href="https://app.sonnentaucher.app" class="bl" id="nl">Log in</a>
+<a href="https://app.sonnentaucher.app" class="bs" id="nc">Registrieren</a>
 </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-<svg width="90" height="90" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="50" cy="50" r="46" stroke="#2D3E50" stroke-width="1.5" fill="none"/>
-<circle cx="50" cy="50" r="43" stroke="#2D3E50" stroke-width=".4" fill="none" opacity=".2"/>
-<circle cx="50" cy="44" r="18" fill="#F0D8B0"/>
-<circle cx="50" cy="44" r="16.5" fill="#E8C87C"/>
-<path d="M65 34 C66 31 67 27 66 24 C65 22 63 21 61 22" stroke="#5B8FA8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-<path d="M36 42 C36 42 41 39 50 39 C59 39 64 42 64 42" stroke="#D4847A" stroke-width="1.3" stroke-linecap="round" fill="none" opacity=".45"/>
-<ellipse cx="44" cy="44" rx="6.5" ry="5.5" fill="#5B8FA8" fill-opacity=".08" stroke="#5B8FA8" stroke-width="1.3"/>
-<ellipse cx="56" cy="44" rx="6.5" ry="5.5" fill="#5B8FA8" fill-opacity=".08" stroke="#5B8FA8" stroke-width="1.3"/>
-<path d="M45 52 C47 55 53 55 55 52" stroke="#BFA16C" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-</svg>
-<div class="hero-pill fu" id="hero-pill"></div>
-<h2 class="fu d1" id="hero-h"></h2>
-<p class="fu d2" id="hero-p"></p>
-<a href="https://app.sonnentaucher.app" class="btn-big fu d3" id="hero-btn"></a>
-<p class="hero-note fu d4">Kein Download. Kein Abo. In 2 Minuten startklar.</p>
-
-<div class="phone-wrap fu d5">
-<div class="phone" id="phone">
-<div class="ph-head"><b>Henri</b><span>2 Jahre, 4 Monate</span></div>
-<div class="ph-body" id="demo-body">
-
-<div class="ds on" data-s="profil">
-<!-- Profil: Beach Club Kacheln -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:2px">
-<div class="ph-card" style="border-top:2px solid #5B8FA8;text-align:center;padding:12px 6px"><div style="font-size:22px;margin-bottom:4px">🌤️</div><div style="font-family:var(--serif);font-size:9px;font-weight:700">Stimmung</div><div style="font-size:8px;opacity:.5;margin-top:2px">😊 Fröhlich</div></div>
-<div class="ph-card" style="border-top:2px solid #C47852;text-align:center;padding:12px 6px"><div style="font-size:22px;margin-bottom:4px">🥄</div><div style="font-family:var(--serif);font-size:9px;font-weight:700">Essen</div><div style="font-size:8px;opacity:.5;margin-top:2px">Nudeln, Bananen</div></div>
-<div class="ph-card" style="border-top:2px solid #2D3E50;text-align:center;padding:12px 6px"><div style="font-size:22px;margin-bottom:4px">🌙</div><div style="font-family:var(--serif);font-size:9px;font-weight:700">Schlaf</div><div style="font-size:8px;opacity:.5;margin-top:2px">19:30 Uhr</div></div>
-<div class="ph-card" style="border-top:2px solid #D4847A;text-align:center;padding:12px 6px"><div style="font-size:22px;margin-bottom:4px">🩹</div><div style="font-family:var(--serif);font-size:9px;font-weight:700">Gesundheit</div><div style="font-size:8px;opacity:.5;margin-top:2px">Schnupfen</div></div>
-<div class="ph-card" style="border-top:2px solid #BFA16C;text-align:center;padding:12px 6px"><div style="font-size:22px;margin-bottom:4px">👕</div><div style="font-family:var(--serif);font-size:9px;font-weight:700">Größen</div><div style="font-size:8px;opacity:.5;margin-top:2px">98/104</div></div>
-<div class="ph-card" style="border-top:2px solid #6B9A7A;text-align:center;padding:12px 6px"><div style="font-size:22px;margin-bottom:4px">🌱</div><div style="font-family:var(--serif);font-size:9px;font-weight:700">Entwicklung</div><div style="font-size:8px;opacity:.5;margin-top:2px">3-Wort-Sätze</div></div>
-</div>
-</div>
-
-<div class="ds" data-s="kalender">
-<!-- Kalender: Wochenansicht -->
-<div style="padding:4px 2px">
-<div style="display:flex;justify-content:space-between;padding:0 4px 8px"><span style="font-family:var(--serif);font-size:11px;font-weight:700">März 2026</span><span style="font-size:8px;opacity:.4">KW 11</span></div>
-<div style="display:flex;gap:2px;margin-bottom:8px">
-<div style="flex:1;text-align:center;padding:4px 0;font-size:7px;opacity:.4">Mo</div>
-<div style="flex:1;text-align:center;padding:4px 0;font-size:7px;opacity:.4">Di</div>
-<div style="flex:1;text-align:center;padding:4px 0;font-size:7px;opacity:.4">Mi</div>
-<div style="flex:1;text-align:center;padding:4px 0;font-size:7px;opacity:.4">Do</div>
-<div style="flex:1;text-align:center;padding:4px 0;font-size:7px;opacity:.4">Fr</div>
-<div style="flex:1;text-align:center;padding:4px 0;font-size:7px;opacity:.4">Sa</div>
-<div style="flex:1;text-align:center;padding:4px 0;font-size:7px;opacity:.4">So</div>
-</div>
-<div style="display:flex;gap:2px;margin-bottom:3px">
-<div style="flex:1;text-align:center;padding:6px 0;border-radius:6px;font-size:10px;font-weight:600;background:rgba(91,143,168,.15);color:#5B8FA8">9</div>
-<div style="flex:1;text-align:center;padding:6px 0;border-radius:6px;font-size:10px;font-weight:600;background:rgba(91,143,168,.15);color:#5B8FA8">10</div>
-<div style="flex:1;text-align:center;padding:6px 0;border-radius:6px;font-size:10px;font-weight:600;background:rgba(91,143,168,.15);color:#5B8FA8;border:1.5px dashed #C47852">11</div>
-<div style="flex:1;text-align:center;padding:6px 0;border-radius:6px;font-size:10px;font-weight:600;background:rgba(212,132,122,.12);color:#D4847A">12</div>
-<div style="flex:1;text-align:center;padding:6px 0;border-radius:6px;font-size:10px;font-weight:600;background:rgba(212,132,122,.12);color:#D4847A">13</div>
-<div style="flex:1;text-align:center;padding:6px 0;border-radius:6px;font-size:10px;font-weight:600;background:rgba(212,132,122,.12);color:#D4847A">14</div>
-<div style="flex:1;text-align:center;padding:6px 0;border-radius:6px;font-size:10px;font-weight:600;background:rgba(212,132,122,.12);color:#D4847A;border:1.5px dashed #C47852">15</div>
-</div>
-<div style="display:flex;gap:4px;margin-top:8px;font-size:8px;opacity:.5"><span style="width:8px;height:8px;border-radius:4px;background:rgba(91,143,168,.3);display:inline-block"></span> Papa <span style="width:8px;height:8px;border-radius:4px;background:rgba(212,132,122,.3);display:inline-block;margin-left:8px"></span> Mama <span style="width:8px;height:8px;border-radius:4px;border:1px dashed #C47852;display:inline-block;margin-left:8px"></span> Übergabe</div>
-</div>
-<div class="ph-card" style="margin-top:6px"><div class="ph-label">🩺 Fr 13.3.</div><div class="ph-val">Kinderarzt 10:00 — U7</div></div>
-</div>
-
-<div class="ds" data-s="übergabe">
-<!-- Übergabe: Countdown + Check-in -->
-<div style="text-align:center;padding:12px 0 8px">
-<div style="font-size:8px;opacity:.4;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Nächste Übergabe</div>
-<div style="font-family:var(--serif);font-size:26px;font-weight:900">Mi, 16:00</div>
-<div style="font-family:var(--hand);font-size:14px;color:var(--terra);margin-top:2px">Papa → Mama</div>
-<div style="display:inline-block;margin-top:8px;padding:4px 12px;border-radius:100px;font-size:9px;font-weight:700;background:rgba(91,143,168,.1);color:var(--azure)">⏱ in 2 Tagen, 4 Stunden</div>
-</div>
-<div class="ph-card" style="margin-top:6px"><div class="ph-label">Quick Check-in</div>
-<div style="display:flex;gap:3px;margin-top:4px">
-<span style="padding:4px 8px;border-radius:6px;font-size:9px;background:rgba(107,154,122,.1);color:#6B9A7A">😊 Fröhlich</span>
-<span style="padding:4px 8px;border-radius:6px;font-size:9px;background:rgba(196,120,82,.08);color:#C47852">🍝 Gut gegessen</span>
-<span style="padding:4px 8px;border-radius:6px;font-size:9px;background:rgba(91,143,168,.08);color:#5B8FA8">😴 1h Schlaf</span>
-</div></div>
-<div class="ph-card"><div class="ph-label">📝 Notiz</div><div class="ph-val" style="font-family:var(--hand);font-size:12px;color:var(--terra)">Hat neues Wort gelernt: "Schmetterling" 🦋</div></div>
-</div>
-
-<div class="ds" data-s="todos">
-<!-- To-Dos -->
-<div style="padding:4px 2px">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span style="font-family:var(--serif);font-size:11px;font-weight:700">Aufgaben</span><span style="font-size:8px;opacity:.4">3 offen</span></div>
-<div class="ph-card"><div style="display:flex;gap:7px;align-items:center"><span style="width:18px;height:18px;border-radius:4px;border:2px solid #5B8FA8;display:flex;align-items:center;justify-content:center;flex-shrink:0"></span><div style="flex:1"><div class="ph-val" style="font-weight:600">Winterjacke kaufen</div><div style="display:flex;gap:4px;margin-top:3px"><span style="font-size:7px;padding:2px 6px;border-radius:100px;background:rgba(91,143,168,.1);color:#5B8FA8">👨 Papa</span><span style="font-size:7px;padding:2px 6px;border-radius:100px;background:rgba(196,120,82,.08);color:#C47852">📅 Freitag</span></div></div></div></div>
-<div class="ph-card"><div style="display:flex;gap:7px;align-items:center"><span style="width:18px;height:18px;border-radius:4px;border:2px solid #D4847A;display:flex;align-items:center;justify-content:center;flex-shrink:0"></span><div style="flex:1"><div class="ph-val" style="font-weight:600">Kita-Anmeldung abgeben</div><div style="display:flex;gap:4px;margin-top:3px"><span style="font-size:7px;padding:2px 6px;border-radius:100px;background:rgba(212,132,122,.1);color:#D4847A">👩 Mama</span><span style="font-size:7px;padding:2px 6px;border-radius:100px;background:rgba(196,87,74,.08);color:#C4574A">📅 überfällig</span></div></div></div></div>
-<div class="ph-card" style="opacity:.4"><div style="display:flex;gap:7px;align-items:center"><span style="width:18px;height:18px;border-radius:4px;background:#6B9A7A;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:10px">✓</span><div><div class="ph-val" style="text-decoration:line-through">U7 Termin machen</div><div style="font-size:7px;opacity:.5;margin-top:2px">erledigt vor 2 Tagen</div></div></div></div>
-</div>
-</div>
-
-<div class="ds" data-s="wiki">
-<!-- Wiki -->
-<div style="padding:4px 2px">
-<div style="display:flex;gap:4px;margin-bottom:8px">
-<span style="padding:5px 10px;border-radius:8px;font-size:8px;font-weight:700;background:rgba(91,143,168,.12);color:#5B8FA8">📖 Kompendium</span>
-<span style="padding:5px 10px;border-radius:8px;font-size:8px;font-weight:600;opacity:.4">✨ Neu (3)</span>
-<span style="padding:5px 10px;border-radius:8px;font-size:8px;font-weight:600;opacity:.4">📜 Verlauf</span>
-</div>
-<div class="ph-card"><div class="ph-label">🥄 Essen & Trinken</div><div class="ph-val" style="font-size:10px;line-height:1.5">Lieblingsessen: Nudeln mit Pesto, Bananen<br>Mag nicht: Brokkoli<br>Allergien: keine</div></div>
-<div class="ph-card"><div class="ph-label">🌙 Schlaf</div><div class="ph-val" style="font-size:10px;line-height:1.5">Schlafenszeit: 19:30<br>Ritual: Buch vorlesen, Nachtlicht<br>Mittagsschlaf: 13–14:30</div></div>
-<div class="ph-card"><div class="ph-label">👕 Größen</div><div class="ph-val" style="font-size:10px;line-height:1.5">Oberteil: 98/104 · Hose: 98<br>Schuhe: 26 · Mütze: 50/52</div></div>
-</div>
-</div>
-</div>
-
-<!-- Screen label + dots -->
-<div style="position:absolute;bottom:38px;left:0;right:0;text-align:center;z-index:2">
-<div id="screen-label" style="font-family:var(--serif);font-size:9px;font-weight:700;letter-spacing:.5px;margin-bottom:4px;opacity:.5"></div>
-<div id="dots" style="display:flex;gap:5px;justify-content:center"></div>
-</div>
-
-<div class="ph-tabs" id="tabs">
-<div class="ph-tab on" data-t="profil"><div>☀️</div>Profil</div>
-<div class="ph-tab" data-t="kalender"><div>📅</div>Kalender</div>
-<div class="ph-tab" data-t="übergabe"><div>🔄</div>Übergabe</div>
-<div class="ph-tab" data-t="todos"><div>✅</div>To Dos</div>
-<div class="ph-tab" data-t="wiki"><div>📖</div>Wiki</div>
-</div>
-</div>
-</div>
+<span class="logo-sun fu">☀️</span>
+<h2 class="fu d1" id="hh">Euer Kind verdient, dass <em id="he">alle Bescheid wissen.</em></h2>
+<p class="fu d2" id="hp">Die eine App, in der alles über euer Kind steht — sichtbar für Mama, Papa, Oma und alle, die es betreuen.</p>
+<a href="https://app.sonnentaucher.app" class="bb fu d3" id="hb">Jetzt registrieren — kostenlos</a>
+<p class="hero-note fu d4" id="hn">Kein Download. Kein Abo. In 2 Minuten startklar.</p>
 </section>
 
-<!-- PROBLEM -->
-<div class="stripe" id="stripe1"></div>
+<!-- APP SHOWCASE -->
+<div style="max-width:900px;margin:0 auto;padding:0 24px">
+<p style="font-family:var(--s);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px" id="scl">So sieht's aus</p>
+<div class="showcase" id="showcase"></div>
+</div>
+
+<div class="stripe" id="s1" style="margin-top:32px"></div>
+
 <section>
-<div class="sl" id="sl1"></div>
-<h2 class="st">Wichtige Infos über euer Kind gehen jeden Tag verloren.</h2>
-<p class="sd">Was isst sie gerade gern? Wann ist der nächste Arzttermin? Hat er seine Medizin bekommen? Zwischen WhatsApp, Notizen und Kühlschrank-Zetteln geht mehr unter als ihr denkt.</p>
+<div class="sl" id="l1">Das Problem</div>
+<h2 class="st" id="t1">Wichtige Infos über euer Kind gehen jeden Tag verloren.</h2>
+<p class="sd" id="d1">Was isst sie gerade gern? Wann ist der nächste Arzttermin? Hat er seine Medizin bekommen? Zwischen WhatsApp, Notizen und Kühlschrank-Zetteln geht mehr unter als ihr denkt.</p>
 <div class="fg" id="problems"></div>
 </section>
 
-<!-- FEATURES -->
 <section>
-<div class="sl" id="sl2"></div>
-<h2 class="st">Ein Ort für alles, was euer Kind betrifft.</h2>
-<p class="sd">sonnentaucher sammelt die wichtigsten Infos über euer Kind — sichtbar für alle, die es betreuen. Mama, Papa, Oma, Babysitter. Immer aktuell, immer dabei.</p>
+<div class="sl" id="l2">Die Lösung</div>
+<h2 class="st" id="t2">Ein Ort für alles, was euer Kind betrifft.</h2>
+<p class="sd" id="d2">sonnentaucher sammelt die wichtigsten Infos über euer Kind — sichtbar für alle, die es betreuen. Immer aktuell, immer dabei.</p>
 <div class="fg" id="features"></div>
-<div style="text-align:center;margin-top:32px">
-<a href="https://app.sonnentaucher.app" class="btn-big" id="mid-cta">Ausprobieren</a>
+<div style="text-align:center;margin-top:24px">
+<a href="https://app.sonnentaucher.app" class="bb" id="mb">Kostenlos ausprobieren</a>
 </div>
 </section>
 
-<!-- STEPS -->
-<div class="stripe" id="stripe2"></div>
+<div class="stripe" id="s2"></div>
+
 <section>
-<div class="sl" id="sl3"></div>
-<h2 class="st">In 2 Minuten startklar. Versprochen.</h2>
-<p class="sd">Kein App Store, kein Download, kein Abo. Einfach öffnen, anmelden, loslegen.</p>
-<div class="steps" id="stepsbox"></div>
+<div class="sl" id="l3">So einfach geht's</div>
+<h2 class="st" id="t3">In 2 Minuten startklar. Versprochen.</h2>
+<p class="sd" id="d3">Kein App Store, kein Download, kein Abo. Öffnen, anmelden, loslegen.</p>
+<div class="steps" id="steps"></div>
 </section>
 
-<!-- SOCIAL PROOF -->
-<div class="proof" id="proofbox">
-<div class="proof-nums" id="proofnums"></div>
-<p style="font-family:var(--hand);font-size:17px;margin-top:16px" id="prooftext"></p>
-</div>
-
-<!-- PRICING -->
 <section id="start">
-<div class="sl" id="sl4"></div>
-<h2 class="st">Starte kostenlos. Upgrade wenn du mehr brauchst.</h2>
-<p class="sd">Kein Haken, kein Kleingedrucktes. Die Grundversion ist komplett kostenlos — für immer.</p>
-<div class="pricing" id="pricebox"></div>
+<div class="sl" id="l4">Preise</div>
+<h2 class="st" id="t4">Starte kostenlos. Upgrade wenn du mehr brauchst.</h2>
+<p class="sd" id="d4">Kein Haken. Die Grundversion ist kostenlos — für immer.</p>
+<div class="pricing" id="prices"></div>
 </section>
 
-<!-- FINAL CTA -->
 <div class="final">
-<div class="stripe" id="stripe3" style="margin-bottom:28px"></div>
-<h2 id="final-h">Bereit einzutauchen?</h2>
-<p id="final-p">Erstelle in 2 Minuten das Profil eures Kindes. Kostenlos, sicher, sofort nutzbar.</p>
-<a href="https://app.sonnentaucher.app" class="btn-big" id="final-btn">Ausprobieren ☀️</a>
+<div class="stripe" id="s3" style="margin-bottom:20px"></div>
+<h2 id="fh">Bereit einzutauchen?</h2>
+<p id="fp">Erstelle in 2 Minuten das Profil eures Kindes.</p>
+<a href="https://app.sonnentaucher.app" class="bb" id="fb">Registrieren — kostenlos ☀️</a>
 </div>
 
 <footer>
-<p style="font-family:var(--serif);font-style:italic">sonnentaucher</p>
+<p style="font-family:var(--s);font-style:italic">sonnentaucher</p>
 <p>Ein Dienst der Frerich United Ventures GmbH</p>
 <div><a href="https://app.sonnentaucher.app">App</a><a href="#">Impressum</a><a href="#">Datenschutz</a></div>
-<p style="margin-top:8px">An der Ronne 48, 50859 Köln · HRB 112376</p>
+<p style="margin-top:4px">An der Ronne 48, 50859 Köln · HRB 112376</p>
 </footer>
 
 <script>
-// ═══ TIME-OF-DAY THEMES ═══
-function getTheme(){
+function G(){
 const h=new Date().getHours();
-if(h>=6&&h<9)return{name:'morning',bg:'#FDF3E8',surface:'rgba(253,243,232,.88)',cream:'#FDF8F2',accent:'#C47852',accentLt:'rgba(196,120,82,.1)',text:'#3A3028',t2:'#7A6E5F',t3:'#A89D8E',border:'rgba(196,120,82,.08)',stripe:'repeating-linear-gradient(90deg,#C47852 0px,#C47852 8px,#FDF3E8 8px,#FDF3E8 16px)',navBg:'rgba(253,243,232,.88)',btnBg:'#C47852',btnTxt:'#FDF8F2',phoneBg:'#FDF8F2',cardBg:'rgba(253,243,232,.6)',cardBorder:'rgba(196,120,82,.08)',tabBg:'rgba(253,243,232,.9)',moodOn:'rgba(196,120,82,.12)',pill:'☀️ Guten Morgen'};
-if(h>=9&&h<12)return{name:'midmorning',bg:'#F5EDE3',surface:'rgba(254,251,246,.85)',cream:'#FEFBF6',accent:'#5B8FA8',accentLt:'rgba(91,143,168,.08)',text:'#2D3E50',t2:'#7A6E5F',t3:'#A89D8E',border:'rgba(45,62,80,.06)',stripe:'repeating-linear-gradient(90deg,#A8CCD9 0px,#A8CCD9 8px,#F5EDE3 8px,#F5EDE3 16px)',navBg:'rgba(245,237,227,.88)',btnBg:'#2D3E50',btnTxt:'#FEFBF6',phoneBg:'#FEFBF6',cardBg:'rgba(254,251,246,.6)',cardBorder:'rgba(45,62,80,.05)',tabBg:'rgba(245,237,227,.9)',moodOn:'rgba(91,143,168,.12)',pill:'☀️ The Parenting App'};
-if(h>=12&&h<16)return{name:'noon',bg:'#EEF4F8',surface:'rgba(238,244,248,.88)',cream:'#F5FAFE',accent:'#5B8FA8',accentLt:'rgba(91,143,168,.08)',text:'#2D3E50',t2:'#4A6275',t3:'#7A94A8',border:'rgba(91,143,168,.08)',stripe:'repeating-linear-gradient(90deg,#5B8FA8 0px,#5B8FA8 8px,#EEF4F8 8px,#EEF4F8 16px)',navBg:'rgba(238,244,248,.88)',btnBg:'#2D3E50',btnTxt:'#F5FAFE',phoneBg:'#F5FAFE',cardBg:'rgba(238,244,248,.5)',cardBorder:'rgba(91,143,168,.06)',tabBg:'rgba(238,244,248,.9)',moodOn:'rgba(91,143,168,.12)',pill:'🏖️ The Parenting App'};
-if(h>=16&&h<19)return{name:'afternoon',bg:'#F5EBE0',surface:'rgba(245,235,224,.88)',cream:'#FAF3EB',accent:'#C47852',accentLt:'rgba(196,120,82,.08)',text:'#3A3028',t2:'#7A6E5F',t3:'#A89D8E',border:'rgba(196,120,82,.06)',stripe:'repeating-linear-gradient(90deg,#BFA16C 0px,#BFA16C 8px,#F5EBE0 8px,#F5EBE0 16px)',navBg:'rgba(245,235,224,.88)',btnBg:'#C47852',btnTxt:'#FAF3EB',phoneBg:'#FAF3EB',cardBg:'rgba(245,235,224,.5)',cardBorder:'rgba(196,120,82,.06)',tabBg:'rgba(245,235,224,.9)',moodOn:'rgba(196,120,82,.12)',pill:'🌇 The Parenting App'};
-if(h>=19&&h<22)return{name:'evening',bg:'#D6E4EC',surface:'rgba(214,228,236,.85)',cream:'#E4EEF4',accent:'#5B8FA8',accentLt:'rgba(91,143,168,.1)',text:'#1E3245',t2:'#4A6275',t3:'#7A94A8',border:'rgba(45,62,80,.08)',stripe:'repeating-linear-gradient(90deg,#5B8FA8 0px,#5B8FA8 8px,#D6E4EC 8px,#D6E4EC 16px)',navBg:'rgba(214,228,236,.88)',btnBg:'#2D3E50',btnTxt:'#E4EEF4',phoneBg:'#E4EEF4',cardBg:'rgba(214,228,236,.5)',cardBorder:'rgba(45,62,80,.06)',tabBg:'rgba(214,228,236,.9)',moodOn:'rgba(91,143,168,.15)',pill:'🌊 The Parenting App'};
-return{name:'night',bg:'#1C2530',surface:'rgba(35,45,55,.8)',cream:'#243044',accent:'#8BB8CE',accentLt:'rgba(139,184,206,.1)',text:'#F0EBE5',t2:'#A89E94',t3:'#6E665E',border:'rgba(168,204,217,.08)',stripe:'repeating-linear-gradient(90deg,#8BB8CE 0px,#8BB8CE 8px,#1C2530 8px,#1C2530 16px)',navBg:'rgba(28,37,48,.9)',btnBg:'#8BB8CE',btnTxt:'#1C2530',phoneBg:'#243044',cardBg:'rgba(35,45,55,.6)',cardBorder:'rgba(168,204,217,.06)',tabBg:'rgba(28,37,48,.9)',moodOn:'rgba(139,184,206,.15)',pill:'🌙 The Parenting App'};
+if(h>=6&&h<9)return{bg:'#FDF3E8',sf:'rgba(253,243,232,.9)',ac:'#C47852',al:'rgba(196,120,82,.1)',tx:'#3A3028',t2:'#7A6E5F',t3:'#A89D8E',bd:'rgba(196,120,82,.06)',st:'repeating-linear-gradient(90deg,#C47852 0px,#C47852 8px,#FDF3E8 8px,#FDF3E8 16px)',nb:'rgba(253,243,232,.88)',bb:'#C47852',bt:'#FDF8F2',tile:'rgba(253,243,232,.5)',p:'☀️ Guten Morgen'};
+if(h>=9&&h<12)return{bg:'#F5EDE3',sf:'rgba(254,251,246,.88)',ac:'#5B8FA8',al:'rgba(91,143,168,.08)',tx:'#2D3E50',t2:'#7A6E5F',t3:'#A89D8E',bd:'rgba(45,62,80,.06)',st:'repeating-linear-gradient(90deg,#A8CCD9 0px,#A8CCD9 8px,#F5EDE3 8px,#F5EDE3 16px)',nb:'rgba(245,237,227,.88)',bb:'#2D3E50',bt:'#FEFBF6',tile:'rgba(254,251,246,.5)',p:'☀️ The Parenting App'};
+if(h>=12&&h<16)return{bg:'#EEF4F8',sf:'rgba(238,244,248,.9)',ac:'#5B8FA8',al:'rgba(91,143,168,.08)',tx:'#2D3E50',t2:'#4A6275',t3:'#7A94A8',bd:'rgba(91,143,168,.06)',st:'repeating-linear-gradient(90deg,#5B8FA8 0px,#5B8FA8 8px,#EEF4F8 8px,#EEF4F8 16px)',nb:'rgba(238,244,248,.88)',bb:'#2D3E50',bt:'#F5FAFE',tile:'rgba(238,244,248,.5)',p:'🏖️ The Parenting App'};
+if(h>=16&&h<19)return{bg:'#F5EBE0',sf:'rgba(245,235,224,.9)',ac:'#C47852',al:'rgba(196,120,82,.08)',tx:'#3A3028',t2:'#7A6E5F',t3:'#A89D8E',bd:'rgba(196,120,82,.06)',st:'repeating-linear-gradient(90deg,#BFA16C 0px,#BFA16C 8px,#F5EBE0 8px,#F5EBE0 16px)',nb:'rgba(245,235,224,.88)',bb:'#C47852',bt:'#FAF3EB',tile:'rgba(245,235,224,.5)',p:'🌇 The Parenting App'};
+if(h>=19&&h<22)return{bg:'#D6E4EC',sf:'rgba(214,228,236,.88)',ac:'#5B8FA8',al:'rgba(91,143,168,.1)',tx:'#1E3245',t2:'#4A6275',t3:'#7A94A8',bd:'rgba(45,62,80,.06)',st:'repeating-linear-gradient(90deg,#5B8FA8 0px,#5B8FA8 8px,#D6E4EC 8px,#D6E4EC 16px)',nb:'rgba(214,228,236,.88)',bb:'#2D3E50',bt:'#E4EEF4',tile:'rgba(214,228,236,.5)',p:'🌊 The Parenting App'};
+return{bg:'#1C2530',sf:'rgba(35,45,55,.8)',ac:'#8BB8CE',al:'rgba(139,184,206,.1)',tx:'#F0EBE5',t2:'#A89E94',t3:'#6E665E',bd:'rgba(168,204,217,.06)',st:'repeating-linear-gradient(90deg,#8BB8CE 0px,#8BB8CE 8px,#1C2530 8px,#1C2530 16px)',nb:'rgba(28,37,48,.9)',bb:'#8BB8CE',bt:'#1C2530',tile:'rgba(35,45,55,.6)',p:'🌙 The Parenting App'};
 }
 
-function applyTheme(){
-const T=getTheme();
-const r=document.documentElement;
-document.body.style.backgroundColor=T.bg;
-document.body.style.color=T.text;
+function A(){try{
+const t=G();
+document.body.style.background=t.bg;document.body.style.color=t.tx;
+document.getElementById('nav').style.background=t.nb;
+document.getElementById('nt').style.color=t.tx;
+document.getElementById('nl').style.color=t.tx;document.getElementById('nl').style.border='1.5px solid '+t.bd;document.getElementById('nl').style.background='transparent';
+document.getElementById('nc').style.background=t.bb;document.getElementById('nc').style.color=t.bt;
+document.getElementById('hh').style.color=t.tx;document.getElementById('he').style.color=t.ac;
+document.getElementById('hp').style.color=t.t2;
+document.getElementById('hb').style.background=t.bb;document.getElementById('hb').style.color=t.bt;document.getElementById('hb').style.boxShadow='0 4px 18px '+t.ac+'22';
+document.getElementById('hn').style.color=t.t3;
+document.getElementById('scl').style.color=t.ac;
+['s1','s2','s3'].forEach(i=>document.getElementById(i).style.background=t.st);
+['l1','l2','l3','l4'].forEach(i=>document.getElementById(i).style.color=t.ac);
+['t1','t2','t3','t4','fh'].forEach(i=>document.getElementById(i).style.color=t.tx);
+['d1','d2','d3','d4'].forEach(i=>document.getElementById(i).style.color=t.t2);
+document.getElementById('fp').style.color=t.ac;
 
-// Intro
-document.querySelector('#intro').style.backgroundColor=T.bg;
-document.querySelector('#intro .t').style.color=T.text;
-document.querySelector('#intro .t').textContent='sonnentaucher';
-document.querySelector('#intro .s').style.color=T.accent;
-document.querySelector('#intro .s').textContent='The Parenting App';
+// APP SHOWCASE CARDS
+document.getElementById('showcase').innerHTML=[
+{e:'☀️',title:'Kinderprofil',border:'#5B8FA8',content:`
+<div class="sc-grid">
+<div class="sc-tile" style="background:${t.tile};border-top:2px solid #5B8FA8"><div class="e">🌤️</div><div class="l" style="color:${t.t3}">Stimmung</div><div style="font-size:9px;color:${t.t2}">😊 Fröhlich</div></div>
+<div class="sc-tile" style="background:${t.tile};border-top:2px solid #C47852"><div class="e">🥄</div><div class="l" style="color:${t.t3}">Essen</div><div style="font-size:9px;color:${t.t2}">Nudeln, Bananen</div></div>
+<div class="sc-tile" style="background:${t.tile};border-top:2px solid #2D3E50"><div class="e">🌙</div><div class="l" style="color:${t.t3}">Schlaf</div><div style="font-size:9px;color:${t.t2}">19:30 Uhr</div></div>
+<div class="sc-tile" style="background:${t.tile};border-top:2px solid #D4847A"><div class="e">🩹</div><div class="l" style="color:${t.t3}">Gesundheit</div><div style="font-size:9px;color:${t.t2}">Schnupfen</div></div>
+</div>`},
+{e:'📅',title:'Kalender',border:'#2D3E50',content:`
+<div class="sc-row" style="border-bottom:1px solid ${t.bd}"><div class="sc-dot" style="background:#5B8FA8"></div><div><div class="sc-val" style="color:#5B8FA8;font-weight:600">Mo–Mi · Papa</div><div class="sc-sub" style="color:${t.t3}">Übergabe Mi 16:00</div></div></div>
+<div class="sc-row" style="border-bottom:1px solid ${t.bd}"><div class="sc-dot" style="background:#D4847A"></div><div><div class="sc-val" style="color:#D4847A;font-weight:600">Do–So · Mama</div><div class="sc-sub" style="color:${t.t3}">Übergabe So 18:00</div></div></div>
+<div class="sc-row"><div class="sc-dot" style="background:#BFA16C"></div><div><div class="sc-val" style="color:${t.tx}">Kinderarzt Fr 10:00</div><div class="sc-sub" style="color:${t.t3}">U7 Untersuchung</div></div></div>`},
+{e:'🔄',title:'Übergabe',border:'#C47852',content:`
+<div style="text-align:center;padding:6px 0 10px"><div style="font-family:var(--s);font-size:18px;font-weight:900;color:${t.tx}">Mi, 16:00</div><div style="font-family:var(--h);font-size:12px;color:#C47852">Papa → Mama</div></div>
+<div style="display:flex;gap:3px;flex-wrap:wrap"><span class="sc-chip" style="background:rgba(107,154,122,.1);color:#6B9A7A">😊 Fröhlich</span><span class="sc-chip" style="background:rgba(196,120,82,.08);color:#C47852">🍝 Gegessen</span><span class="sc-chip" style="background:rgba(91,143,168,.08);color:#5B8FA8">😴 Geschlafen</span></div>
+<div style="font-family:var(--h);font-size:11px;color:#C47852;margin-top:8px;padding-top:6px;border-top:1px solid ${t.bd}">"Schmetterling" gelernt 🦋</div>`},
+{e:'✅',title:'To-Dos',border:'#6B9A7A',content:`
+<div class="sc-row" style="border-bottom:1px solid ${t.bd}"><div style="width:14px;height:14px;border-radius:3px;border:2px solid #5B8FA8;flex-shrink:0"></div><div><div class="sc-val" style="color:${t.tx}">Winterjacke kaufen</div><div style="display:flex;gap:3px;margin-top:2px"><span class="sc-chip" style="background:rgba(91,143,168,.08);color:#5B8FA8">Papa</span><span class="sc-chip" style="background:rgba(196,120,82,.06);color:#C47852">Fr</span></div></div></div>
+<div class="sc-row" style="border-bottom:1px solid ${t.bd}"><div style="width:14px;height:14px;border-radius:3px;border:2px solid #D4847A;flex-shrink:0"></div><div><div class="sc-val" style="color:${t.tx}">Kita-Anmeldung</div><div style="display:flex;gap:3px;margin-top:2px"><span class="sc-chip" style="background:rgba(212,132,122,.08);color:#D4847A">Mama</span></div></div></div>
+<div class="sc-row" style="opacity:.4"><div style="width:14px;height:14px;border-radius:3px;background:#6B9A7A;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:8px">✓</div><div class="sc-val" style="text-decoration:line-through;color:${t.t3}">U7 Termin machen</div></div>`},
+{e:'📖',title:'Wiki',border:'#BFA16C',content:`
+<div style="display:flex;gap:4px;margin-bottom:8px"><span class="sc-chip" style="background:rgba(91,143,168,.1);color:#5B8FA8;font-weight:700">Kompendium</span><span class="sc-chip" style="background:${t.tile};color:${t.t3}">Neu (3)</span><span class="sc-chip" style="background:${t.tile};color:${t.t3}">Verlauf</span></div>
+<div class="sc-row" style="border-bottom:1px solid ${t.bd}"><div class="sc-val" style="color:${t.t2};font-size:10px;line-height:1.5">🥄 Nudeln mit Pesto, Bananen<br>🌙 Schlafenszeit: 19:30<br>👕 Oberteil: 98/104</div></div>
+<div class="sc-row"><div class="sc-val" style="color:${t.t3};font-size:9px">Stimmung aktualisiert · vor 2h</div></div>`}
+].map(c=>`<div class="sc" style="background:${t.sf};border:1px solid ${t.bd};border-top:3px solid ${c.border}"><div class="sc-head" style="border-bottom:1px solid ${t.bd}"><span class="e">${c.e}</span><span class="t" style="color:${t.tx}">${c.title}</span></div>${c.content}</div>`).join('');
 
-// Nav
-document.querySelector('#nav').style.background=T.navBg;
-document.querySelector('#nav').style.backdropFilter='blur(20px)';
-document.querySelector('#nav-title').style.color=T.text;
-document.querySelector('#nav-title').textContent='sonnentaucher';
-document.querySelector('#nav-login').style.color=T.text;
-document.querySelector('#nav-login').style.borderColor=T.border;
-document.querySelector('#nav-cta').style.background=T.btnBg;
-document.querySelector('#nav-cta').style.color=T.btnTxt;
+// PROBLEMS
+document.getElementById('problems').innerHTML=[
+{i:'😤',t:'"Das hast du mir nie gesagt"',d:'Wichtige Infos verschwinden in Chat-Verläufen. Keiner weiß, wer was wann geschrieben hat.'},
+{i:'🤷',t:'"Was isst sie gerade gern?"',d:'Kinder ändern ihre Vorlieben jede Woche. Papa weiß es, Oma nicht.'},
+{i:'📱',t:'Kalender hier, Notizen dort',d:'Die Infos eures Kindes sind überall verstreut. Und nirgends vollständig.'}
+].map(f=>`<div class="fc" style="background:${t.sf};border:1px solid ${t.bd}"><div class="ico">${f.i}</div><h3 style="color:${t.tx}">${f.t}</h3><p style="color:${t.t2}">${f.d}</p></div>`).join('');
 
-// Hero
-document.querySelector('#hero-pill').style.color=T.accent;
-document.querySelector('#hero-pill').textContent=T.pill;
-document.querySelector('#hero-h').style.color=T.text;
-document.querySelector('#hero-h').innerHTML='Euer Kind verdient,<br>dass <em style="color:'+T.accent+'">alle Bescheid wissen.</em>';
-document.querySelector('#hero-p').style.color=T.t2;
-document.querySelector('#hero-p').textContent='Die eine App, in der alles über euer Kind steht — sichtbar für Mama, Papa, Oma und alle, die es betreuen.';
-document.querySelector('#hero-btn').style.background=T.btnBg;
-document.querySelector('#hero-btn').style.color=T.btnTxt;
-document.querySelector('#hero-btn').style.boxShadow='0 6px 24px '+T.accent+'25';
-document.querySelector('#hero-btn').textContent='Ausprobieren';
-document.querySelector('.hero-note').style.color=T.t3;
+// FEATURES
+document.getElementById('features').innerHTML=[
+{i:'☀️',t:'Lebendes Kinderprofil',d:'Stimmung, Essen, Schlaf, Gesundheit — alles was man wissen muss.'},
+{i:'📅',t:'Wechselmodell-Kalender',d:'Wer hat wann? Zeiträume antippen, fertig.'},
+{i:'🔄',t:'Übergabe-Briefing',d:'Schnelles Check-in: Schlaf, Essen, Stimmung.'},
+{i:'✅',t:'Geteilte Aufgaben',d:'To-Dos mit Zuweisung und Deadline. Farbcodiert.'},
+{i:'📖',t:'Auto-Wiki',d:'Automatisches Nachschlagewerk mit Änderungshistorie.'},
+{i:'📤',t:'Push ohne Stress',d:'Nur pushen wenn es wirklich Neues gibt.'}
+].map(f=>`<div class="fc" style="background:${t.sf};border:1px solid ${t.bd}"><div class="ico">${f.i}</div><h3 style="color:${t.tx}">${f.t}</h3><p style="color:${t.t2}">${f.d}</p></div>`).join('');
 
-// Phone - minimal, don't override card content
-const ph=document.querySelector('#phone');
-ph.style.background=T.phoneBg;
-ph.style.border='1px solid '+T.cardBorder;
-document.querySelector('#tabs').style.background=T.tabBg;
+const mb=document.getElementById('mb');mb.style.background=t.bb;mb.style.color=t.bt;mb.style.boxShadow='0 4px 18px '+t.ac+'1A';
 
-// Stripes
-document.querySelectorAll('.stripe').forEach(s=>s.style.background=T.stripe);
+// STEPS
+document.getElementById('steps').innerHTML=[
+{n:'1',c:t.ac,t:'Konto erstellen',d:'Email und Passwort — 30 Sekunden.',m:'⏱ 30 Sek.'},
+{n:'2',c:'#C47852',t:'Code teilen',d:'Schick den Einladungscode an Familie & Betreuer.',m:'⏱ 20 Sek.'},
+{n:'3',c:'#D4847A',t:'Profil anlegen',d:'Stimmung, Essen, Schlaf eintragen. Sofort sichtbar.',m:'⏱ 40 Sek.'},
+{n:'4',c:'#2D3E50',t:'Startbildschirm',d:'Safari → Teilen → "Zum Home-Bildschirm".',m:'☀️ Fertig!'}
+].map(s=>`<div class="step" style="background:${t.sf};border:1px solid ${t.bd}"><div class="step-n" style="background:${s.c}">${s.n}</div><div><h3 style="color:${t.tx}">${s.t}</h3><p style="color:${t.t2}">${s.d}</p><div class="tm" style="color:${t.ac}">${s.m}</div></div></div>`).join('');
 
-// Section labels
-document.querySelector('#sl1').style.color=T.accent;
-document.querySelector('#sl1').textContent='Das Problem';
-document.querySelector('#sl2').style.color=T.accent;
-document.querySelector('#sl2').textContent='Die Lösung';
-document.querySelector('#sl3').style.color=T.accent;
-document.querySelector('#sl3').textContent='So einfach geht\'s';
-document.querySelector('#sl4').style.color=T.accent;
-document.querySelector('#sl4').textContent='Preise';
-document.querySelectorAll('.st').forEach(s=>s.style.color=T.text);
-document.querySelectorAll('.sd').forEach(s=>s.style.color=T.t2);
-
-// Problems
-document.querySelector('#problems').innerHTML=[
-{ico:'😤',t:'"Das hast du mir nie gesagt"',d:'Wichtige Infos verschwinden in Chat-Verläufen. Wer hat was wann geschrieben? Keiner weiß es mehr.'},
-{ico:'🤷',t:'"Was isst sie gerade gern?"',d:'Kinder ändern ihre Vorlieben jede Woche. Papa weiß es, Oma nicht. Beim Babysitter gibts Tränen.'},
-{ico:'📱',t:'Kalender hier, Notizen dort',d:'TimeTree, Apple Notizen, WhatsApp, Zettel am Kühlschrank — die Infos eures Kindes sind überall. Und nirgends.'}
-].map(f=>`<div class="fc" style="background:${T.surface};border:1px solid ${T.cardBorder}"><div class="ico">${f.ico}</div><h3 style="color:${T.text}">${f.t}</h3><p style="color:${T.t2}">${f.d}</p></div>`).join('');
-
-// Features
-document.querySelector('#features').innerHTML=[
-{ico:'☀️',t:'Lebendes Kinderprofil',d:'Stimmung, Essen, Schlaf, Gesundheit, Kleidung — alles, was man über euer Kind wissen muss.'},
-{ico:'📅',t:'Wechselmodell-Kalender',d:'Wer hat wann? Zeiträume antippen, fertig. Übergabe-Tage werden automatisch erkannt.'},
-{ico:'🔄',t:'Übergabe-Briefing',d:'Schnelles Check-in bei der Übergabe: Schlaf, Essen, Stimmung — in 30 Sekunden.'},
-{ico:'✅',t:'Geteilte Aufgaben',d:'To-Dos mit Zuweisung und Deadline. Papa blau, Mama korall. Kein Vergessen mehr.'},
-{ico:'📖',t:'Auto-Wiki',d:'Alles was ihr eintragt, wird automatisch zum Nachschlagewerk. Mit kompletter Änderungshistorie.'},
-{ico:'📤',t:'Push ohne Stress',d:'Änderungen sammeln, dann bewusst pushen. Kein ständiges Ping — nur wenn es wirklich was Neues gibt.'}
-].map(f=>`<div class="fc" style="background:${T.surface};border:1px solid ${T.cardBorder}"><div class="ico">${f.ico}</div><h3 style="color:${T.text}">${f.t}</h3><p style="color:${T.t2}">${f.d}</p></div>`).join('');
-
-// Mid CTA
-const mc=document.querySelector('#mid-cta');
-mc.style.background=T.btnBg;mc.style.color=T.btnTxt;mc.style.boxShadow='0 6px 24px '+T.accent+'20';
-
-// Steps
-document.querySelector('#stepsbox').innerHTML=[
-{n:'1',c:T.accent,t:'Konto erstellen',d:'Email und Passwort — fertig. Dauert 30 Sekunden.',tm:'⏱ 30 Sek.'},
-{n:'2',c:'#C47852',t:'Einladungscode teilen',d:'Schick den Code an Papa, Mama, Oma — wer auch immer Zugang braucht.',tm:'⏱ 20 Sek.'},
-{n:'3',c:'#D4847A',t:'Kinderprofil anlegen',d:'Stimmung antippen, Lieblingessen reinschreiben. Sofort für alle sichtbar.',tm:'⏱ 40 Sek.'},
-{n:'4',c:'#2D3E50',t:'Auf den Startbildschirm',d:'Safari → Teilen → "Zum Home-Bildschirm". Fühlt sich an wie eine echte App.',tm:'☀️ Fertig!'}
-].map(s=>`<div class="step" style="background:${T.surface};border:1px solid ${T.cardBorder}"><div class="step-n" style="background:${s.c}">${s.n}</div><div><h3 style="color:${T.text}">${s.t}</h3><p style="color:${T.t2}">${s.d}</p><div class="tm" style="color:${T.accent}">${s.tm}</div></div></div>`).join('');
-
-// Proof
-document.querySelector('#proofbox').style.background=T.surface;
-document.querySelector('#proofnums').innerHTML=[
-{n:'<span class="live-dot" style="background:'+T.accent+'"></span> Live',l:'seit März 2026'},
-{n:'5+',l:'Features'},
-{n:'10',l:'Rollen (Papa bis Kita)'},
-{n:'€0',l:'für immer kostenlos'}
-].map(p=>`<div><div class="proof-n" style="color:${T.accent}">${p.n}</div><div class="proof-l" style="color:${T.t3}">${p.l}</div></div>`).join('');
-document.querySelector('#prooftext').style.color=T.accent;
-document.querySelector('#prooftext').textContent='Gebaut von einem Vater, der es selbst gebraucht hat.';
-
-// Pricing
-document.querySelector('#pricebox').innerHTML=`
-<div class="pc" style="background:${T.surface};border:1px solid ${T.cardBorder}">
-<div class="tag" style="background:${T.accentLt};color:${T.t2}">Free ☀️</div>
-<div class="num" style="color:${T.text}">€0 <span>/Monat</span></div>
-<p class="desc" style="color:${T.t2}">Perfekt zum Starten</p>
-<ul style="color:${T.text}">
-<li style="border-color:${T.cardBorder};color:${T.accent}">1 Kinderprofil</li>
-<li style="border-color:${T.cardBorder};color:${T.accent}">2 Familienmitglieder</li>
-<li style="border-color:${T.cardBorder};color:${T.accent}">Kalender + Übergabe</li>
-<li style="border-color:${T.cardBorder};color:${T.accent}">To-Dos</li>
-<li style="border-color:${T.cardBorder};color:${T.accent}">Wiki (7 Tage)</li>
-</ul>
-<a href="https://app.sonnentaucher.app" class="act" style="background:${T.accentLt};color:${T.text}">Ausprobieren</a>
+// PRICING
+document.getElementById('prices').innerHTML=`
+<div class="pc" style="background:${t.sf};border:1px solid ${t.bd}">
+<div class="tag" style="background:${t.al};color:${t.t2}">Free ☀️</div>
+<div class="num" style="color:${t.tx}">€0<span>/Monat</span></div>
+<p class="desc" style="color:${t.t2}">Zum Starten</p>
+<ul><li style="color:${t.ac}">1 Kind · 2 Mitglieder</li><li style="color:${t.ac}">Kalender + Übergabe</li><li style="color:${t.ac}">To-Dos · Wiki (7 Tage)</li></ul>
+<a href="https://app.sonnentaucher.app" class="act" style="background:${t.al};color:${t.tx}">Jetzt registrieren</a>
 </div>
-<div class="pc" style="background:${T.surface};border:2px solid ${T.accent}">
-<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,${T.accent},${'#BFA16C'},#D4847A)"></div>
-<div class="tag" style="background:${T.accentLt};color:${T.accent}">Pro ✨</div>
-<div class="num" style="color:${T.text}">€4,99 <span>/Monat</span></div>
-<p class="desc" style="color:${T.t2}">Für die ganze Familie</p>
-<ul style="color:${T.text}">
-<li style="border-color:${T.cardBorder};color:${T.accent}">Unbegrenzte Kinder</li>
-<li style="border-color:${T.cardBorder};color:${T.accent}">Unbegrenzte Mitglieder</li>
-<li style="border-color:${T.cardBorder};color:${T.accent}">Alle Features</li>
-<li style="border-color:${T.cardBorder};color:${T.accent}">Komplette Wiki-Historie</li>
-<li style="border-color:${T.cardBorder};color:${T.accent}">PDF-Export & Push</li>
-</ul>
-<a href="https://buy.stripe.com/14AdR39Xe2H02ve0pA63K05" class="act" style="background:${T.btnBg};color:${T.btnTxt}">Pro starten ✨</a>
-<p style="font-family:var(--hand);font-size:13px;color:${T.accent};margin-top:8px">Pro Familie, nicht pro Person.</p>
+<div class="pc" style="background:${t.sf};border:2px solid ${t.ac}">
+<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,${t.ac},#BFA16C,#D4847A)"></div>
+<div class="tag" style="background:${t.al};color:${t.ac}">Pro ✨</div>
+<div class="num" style="color:${t.tx}">€4,99<span>/Mo</span></div>
+<p class="desc" style="color:${t.t2}">Ganze Familie</p>
+<ul><li style="color:${t.ac}">Unbegrenzt Kinder</li><li style="color:${t.ac}">Unbegrenzt Mitglieder</li><li style="color:${t.ac}">Alle Features + Wiki</li><li style="color:${t.ac}">PDF-Export & Push</li></ul>
+<a href="https://buy.stripe.com/14AdR39Xe2H02ve0pA63K05" class="act" style="background:${t.bb};color:${t.bt}">Pro starten ✨</a>
+<p style="font-family:var(--h);font-size:12px;color:${t.ac};margin-top:5px">Pro Familie, nicht pro Person.</p>
 </div>`;
 
-// Final
-document.querySelector('#final-h').style.color=T.text;
-document.querySelector('#final-p').style.color=T.accent;
-const fb=document.querySelector('#final-btn');
-fb.style.background=T.btnBg;fb.style.color=T.btnTxt;fb.style.boxShadow='0 6px 24px '+T.accent+'20';fb.textContent='Ausprobieren ☀️';
+const fb=document.getElementById('fb');fb.style.background=t.bb;fb.style.color=t.bt;fb.style.boxShadow='0 4px 18px '+t.ac+'1A';
+document.querySelector('footer').style.borderTop='1px solid '+t.bd;
+document.querySelectorAll('footer p,footer a').forEach(e=>e.style.color=t.t3);
+document.querySelector('meta[name="theme-color"]')?.setAttribute('content',t.bg);
+}catch(e){console.warn(e)}}
 
-// Footer
-document.querySelector('footer').style.borderColor=T.border;
-document.querySelectorAll('footer p, footer a').forEach(e=>e.style.color=T.t3);
+const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.style.animation='fu .6s ease forwards';obs.unobserve(e.target)}})},{threshold:.1});
 
-// Meta
-document.querySelector('meta[name="theme-color"]')?.setAttribute('content',T.bg);
-}
-
-// ═══ DEMO TAB SWITCHING ═══
-const tabList=['profil','kalender','übergabe','todos','wiki'];
-let curTab=0,autoInt;
-const tabLabels={profil:'Kinderprofil',kalender:'Kalender',übergabe:'Übergabe',todos:'To-Dos',wiki:'Wiki'};
-function updateDots(){
-const T=getTheme();
-document.querySelector('#dots').innerHTML=tabList.map((_,i)=>`<div style="width:${i===curTab?16:5}px;height:5px;border-radius:3px;background:${i===curTab?T.accent:T.border};transition:all .3s"></div>`).join('');
-document.querySelector('#screen-label').textContent=tabLabels[tabList[curTab]]||'';
-document.querySelector('#screen-label').style.color=getTheme().t3;
-}
-function switchTab(t){
-document.querySelectorAll('.ds').forEach(s=>s.classList.remove('on'));
-document.querySelectorAll('.ph-tab').forEach(x=>x.classList.remove('on'));
-const screen=document.querySelector(`.ds[data-s="${t}"]`);
-const tab=document.querySelector(`.ph-tab[data-t="${t}"]`);
-if(screen)screen.classList.add('on');
-if(tab)tab.classList.add('on');
-curTab=tabList.indexOf(t);
-updateDots();
-}
-function startAuto(){autoInt=setInterval(()=>{curTab=(curTab+1)%tabList.length;switchTab(tabList[curTab])},3500)}
-document.querySelectorAll('.ph-tab').forEach(t=>{t.addEventListener('click',()=>{clearInterval(autoInt);switchTab(t.dataset.t);startAuto()})});
-
-// ═══ SCROLL ANIMATIONS ═══
-const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.style.animation='fadeUp .6s ease forwards';obs.unobserve(e.target)}})},{threshold:.12});
-
-// ═══ INIT ═══
-try{applyTheme()}catch(e){console.warn('Theme error:',e)}
-setTimeout(()=>{document.querySelector('#intro').classList.add('gone')},2800);
-setTimeout(()=>{
-try{startAuto();updateDots();}catch(e){console.warn('Demo error:',e)}
-document.querySelectorAll('.fc,.step,.pc').forEach(el=>{el.style.opacity='0';obs.observe(el)});
-},3000);
-
-// Re-apply theme on visibility change
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')try{applyTheme()}catch(e){}});
-setInterval(()=>{try{applyTheme()}catch(e){}},3600000);
+A();
+setTimeout(()=>{document.querySelectorAll('.fc,.step,.pc,.sc').forEach(el=>{el.style.opacity='0';obs.observe(el)})},100);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')A()});
+setInterval(A,3600000);
 </script>
 </body>
 </html>
