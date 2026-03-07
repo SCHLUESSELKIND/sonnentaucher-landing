@@ -105,6 +105,14 @@ footer{padding:28px 24px;text-align:center}
 footer p{font-size:10px;opacity:.35;margin-bottom:3px}
 footer a{opacity:.35;text-decoration:none;margin:0 8px;font-size:10px}
 
+
+.aud-toggle{display:flex;gap:4px;padding:3px;border-radius:100px;margin:0 auto 0;width:fit-content}
+.aud-btn{padding:10px 22px;border-radius:100px;border:none;font-family:var(--s);font-size:14px;font-weight:700;cursor:pointer;transition:all .3s}
+.aud-btn.on{color:#fff}
+.aud-btn:not(.on){background:transparent}
+.tm-content{display:none}
+.tm-content.show{display:block}
+.el-content.hide{display:none}
 @media(max-width:600px){.fg{grid-template-columns:1fr}.pricing{flex-direction:column}.pc{min-width:auto}section{padding:44px 20px}.step{flex-direction:column;gap:8px}.showcase{padding-left:20px}}
 </style>
 </head>
@@ -133,6 +141,15 @@ footer a{opacity:.35;text-decoration:none;margin:0 8px;font-size:10px}
 <p class="hero-note fu d4" id="hn">Kein Download. Kein Abo. In 2 Minuten startklar.</p>
 </section>
 
+<!-- Audience Toggle -->
+<div style="text-align:center;padding:20px 24px 0">
+<div class="aud-toggle" id="aud-toggle">
+<button class="aud-btn on" id="aud-el" onclick="switchAud('el')">Für Eltern</button>
+<button class="aud-btn" id="aud-tm" onclick="switchAud('tm')">Für Tagesmütter</button>
+</div>
+</div>
+
+<div class="el-content" id="el-content">
 <!-- APP SHOWCASE -->
 <div style="max-width:900px;margin:0 auto;padding:0 24px">
 <p style="font-family:var(--s);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px" id="scl">So sieht's aus</p>
@@ -166,6 +183,46 @@ footer a{opacity:.35;text-decoration:none;margin:0 8px;font-size:10px}
 <p class="sd" id="d3">Kein App Store, kein Download, kein Abo. Öffnen, anmelden, loslegen.</p>
 <div class="steps" id="steps"></div>
 </section>
+
+</div>
+
+<!-- TAGESMUTTER CONTENT -->
+<div class="tm-content" id="tm-content">
+
+<section>
+<div class="sl" id="tl1">Für Tagesmütter</div>
+<h2 class="st" id="tt1">Deine Tagespflege. Digital. Ohne Papierkram.</h2>
+<p class="sd" id="td1">sonnentaucher erledigt deine Dokumentation nebenbei — während du dich um die Kinder kümmerst.</p>
+<div class="fg" id="tm-problems"></div>
+</section>
+
+<section>
+<div class="sl" id="tl2">Alles drin</div>
+<h2 class="st" id="tt2">6 Tabs. Alles was du brauchst.</h2>
+<p class="sd" id="td2">Von der Anwesenheitsliste bis zur Steuererklärung — automatisch aus deinem Arbeitsalltag generiert.</p>
+<div class="fg" id="tm-features"></div>
+<div style="text-align:center;margin-top:24px">
+<a href="https://app.sonnentaucher.app" class="bb" id="tm-mb">Tagespflege starten — kostenlos</a>
+</div>
+</section>
+
+<div class="stripe" id="ts1"></div>
+
+<section>
+<div class="sl" id="tl3">Der Clou</div>
+<h2 class="st" id="tt3">Bürokratie erledigt sich nebenbei.</h2>
+<p class="sd" id="td3">Du tippst morgens Check-in, mittags Essen-Emoji, nachmittags eine Notiz. Am Monatsende generiert sonnentaucher automatisch alles.</p>
+<div class="steps" id="tm-steps"></div>
+</section>
+
+<section>
+<div class="sl" id="tl4">So verbindest du Eltern</div>
+<h2 class="st" id="tt4">Dein Code. Ihre App. Alles verbunden.</h2>
+<p class="sd" id="td4">Du bekommst einen persönlichen Code. Eltern geben ihn ein und ihr Kind erscheint in deinem Dashboard.</p>
+<div class="steps" id="tm-flow"></div>
+</section>
+
+</div>
 
 <section id="start">
 <div class="sl" id="l4">Preise</div>
@@ -291,15 +348,109 @@ document.getElementById('prices').innerHTML=`
 <ul><li style="color:${t.ac}">Unbegrenzt Kinder</li><li style="color:${t.ac}">Unbegrenzt Mitglieder</li><li style="color:${t.ac}">Alle Features + Wiki</li><li style="color:${t.ac}">PDF-Export & Push</li></ul>
 <a href="https://buy.stripe.com/14AdR39Xe2H02ve0pA63K05" class="act" style="background:${t.bb};color:${t.bt}">Pro starten ✨</a>
 <p style="font-family:var(--h);font-size:12px;color:${t.ac};margin-top:5px">Pro Familie, nicht pro Person.</p>
-</div>`;
+</div>` + (currentAud === 'tm' ? `
+<div class="pc" style="background:${t.sf};border:2px solid ${t.ac}">
+<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#C47852,${t.ac},#BFA16C)"></div>
+<div class="tag" style="background:${t.al};color:${t.ac}">Tagesmutter 🏠</div>
+<div class="num" style="color:${t.tx}">€9,99<span>/Mo</span></div>
+<p class="desc" style="color:${t.t2}">Professionelle Tagespflege</p>
+<ul><li style="color:${t.ac}">Bis 5 Kinder</li><li style="color:${t.ac}">PDF Monatsprotokoll</li><li style="color:${t.ac}">Anwesenheitsliste + EÜR</li><li style="color:${t.ac}">Betriebskostenpauschale</li><li style="color:${t.ac}">Unfallprotokoll</li></ul>
+<a href="https://app.sonnentaucher.app" class="act" style="background:${t.bb};color:${t.bt}">Tagespflege starten 🏠</a>
+</div>` : '');
 
 const fb=document.getElementById('fb');fb.style.background=t.bb;fb.style.color=t.bt;fb.style.boxShadow='0 4px 18px '+t.ac+'1A';
 document.querySelector('footer').style.borderTop='1px solid '+t.bd;
 document.querySelectorAll('footer p,footer a').forEach(e=>e.style.color=t.t3);
+applyTmTheme(t);
 document.querySelector('meta[name="theme-color"]')?.setAttribute('content',t.bg);
 }catch(e){console.warn(e)}}
 
 const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.style.animation='fu .6s ease forwards';obs.unobserve(e.target)}})},{threshold:.1});
+
+
+// ═══ AUDIENCE TOGGLE ═══
+let currentAud = 'el';
+function switchAud(a){
+  currentAud = a;
+  document.getElementById('el-content').className = a === 'el' ? 'el-content' : 'el-content hide';
+  document.getElementById('tm-content').className = a === 'tm' ? 'tm-content show' : 'tm-content';
+  document.getElementById('aud-el').className = a === 'el' ? 'aud-btn on' : 'aud-btn';
+  document.getElementById('aud-tm').className = a === 'tm' ? 'aud-btn on' : 'aud-btn';
+  // Update hero
+  const t=G();
+  if(a === 'tm'){
+    document.getElementById('hh').innerHTML='Tagespflege. <em id="he" style="color:'+t.ac+'">Ohne Papierkram.</em>';
+    document.getElementById('hp').textContent='Anwesenheit, Berichte, Steuern — sonnentaucher erledigt deine Dokumentation, während du dich um die Kinder kümmerst.';
+    document.getElementById('hb').textContent='Tagespflege starten — kostenlos';
+    document.getElementById('hn').textContent='Bis 2 Kinder kostenlos. Kein Download nötig.';
+    document.getElementById('fh').textContent='Bereit für weniger Papierkram?';
+    document.getElementById('fp').textContent='Starte deine digitale Tagespflege in 2 Minuten.';
+    document.getElementById('fb').textContent='Tagespflege starten ☀️';
+  } else {
+    document.getElementById('hh').innerHTML='Euer Kind verdient, dass <em id="he" style="color:'+t.ac+'">alle Bescheid wissen.</em>';
+    document.getElementById('hp').textContent='Die eine App, in der alles über euer Kind steht — sichtbar für Mama, Papa, Oma und alle, die es betreuen.';
+    document.getElementById('hb').textContent='Jetzt registrieren — kostenlos';
+    document.getElementById('hn').textContent='Kein Download. Kein Abo. In 2 Minuten startklar.';
+    document.getElementById('fh').textContent='Bereit einzutauchen?';
+    document.getElementById('fp').textContent='Erstelle in 2 Minuten das Profil eures Kindes.';
+    document.getElementById('fb').textContent='Registrieren — kostenlos ☀️';
+  }
+  applyTmTheme(t);
+}
+
+function applyTmTheme(t){
+  // Style toggle
+  document.getElementById('aud-toggle').style.background=t.sf;
+  document.getElementById('aud-el').style.background=currentAud==='el'?t.bb:'transparent';
+  document.getElementById('aud-el').style.color=currentAud==='el'?t.bt:t.t2;
+  document.getElementById('aud-tm').style.background=currentAud==='tm'?t.bb:'transparent';
+  document.getElementById('aud-tm').style.color=currentAud==='tm'?t.bt:t.t2;
+
+  // TM section labels
+  ['tl1','tl2','tl3','tl4'].forEach(i=>{const e=document.getElementById(i);if(e)e.style.color=t.ac});
+  ['tt1','tt2','tt3','tt4'].forEach(i=>{const e=document.getElementById(i);if(e)e.style.color=t.tx});
+  ['td1','td2','td3','td4'].forEach(i=>{const e=document.getElementById(i);if(e)e.style.color=t.t2});
+  const ts=document.getElementById('ts1');if(ts)ts.style.background=t.st;
+
+  const tmMb=document.getElementById('tm-mb');
+  if(tmMb){tmMb.style.background=t.bb;tmMb.style.color=t.bt;tmMb.style.boxShadow='0 4px 18px '+t.ac+'1A';}
+
+  // TM Problems
+  const tmP=document.getElementById('tm-problems');
+  if(tmP)tmP.innerHTML=[
+    {i:'📋',t:'Zettelwirtschaft',d:'Anwesenheitslisten auf Papier, Essenszettel, handschriftliche Berichte — jeden Tag.'},
+    {i:'🧮',t:'Steuerchaos',d:'Betriebskostenpauschale berechnen, Einnahmen dokumentieren, EÜR erstellen.'},
+    {i:'📱',t:'WhatsApp-Gruppen',d:'Jede Familie eine Gruppe. Infos gehen unter. Keine Struktur.'}
+  ].map(f=>'<div class="fc" style="background:'+t.sf+';border:1px solid '+t.bd+'"><div class="ico">'+f.i+'</div><h3 style="color:'+t.tx+'">'+f.t+'</h3><p style="color:'+t.t2+'">'+f.d+'</p></div>').join('');
+
+  // TM Features
+  const tmF=document.getElementById('tm-features');
+  if(tmF)tmF.innerHTML=[
+    {i:'🏠',t:'Tages-Dashboard',d:'Alle Kinder auf einen Blick. Check-in/out per Tap. Allergien und Medikamente als Warn-Karten.'},
+    {i:'🍽️',t:'Essen & Allergien',d:'Allergien aller Kinder aggregiert. Mahlzeiten mit einem Emoji loggen.'},
+    {i:'📋',t:'Quick-Protokoll',d:'Schlaf, Stimmung, Windel, Aktivität — in 3 Taps dokumentiert.'},
+    {i:'📤',t:'Auto-Tagesberichte',d:'Aus deinen Logs wird automatisch ein Bericht pro Kind generiert.'},
+    {i:'📊',t:'Büro & Steuern',d:'Anwesenheitsliste, Betriebskostenpauschale, EÜR — alles automatisch.'},
+    {i:'📢',t:'Eltern informieren',d:'Neuigkeiten an alle Eltern senden. Kein Chat, keine Diskussion.'}
+  ].map(f=>'<div class="fc" style="background:'+t.sf+';border:1px solid '+t.bd+'"><div class="ico">'+f.i+'</div><h3 style="color:'+t.tx+'">'+f.t+'</h3><p style="color:'+t.t2+'">'+f.d+'</p></div>').join('');
+
+  // TM Steps (Der Clou)
+  const tmS=document.getElementById('tm-steps');
+  if(tmS)tmS.innerHTML=[
+    {n:'☀️',c:t.ac,t:'07:30 — Check-in',d:'Kind kommt an. Du tippst "Da". Anwesenheitsliste füllt sich automatisch.'},
+    {n:'🍽️',c:'#C47852',t:'12:00 — Essen loggen',d:'Emoji tippen: gut gegessen, wenig, nichts. Allergien werden automatisch beachtet.'},
+    {n:'📝',c:'#D4847A',t:'14:00 — Notiz',d:'"Hat Schmetterling gelernt 🦋" — 5 Sekunden, landet im Tagesbericht.'},
+    {n:'📊',c:'#2D3E50',t:'Monatsende — fertig',d:'Anwesenheitsliste, Betriebskostenpauschale und EÜR sind schon da. PDF drucken, fertig.'}
+  ].map(s=>'<div class="step" style="background:'+t.sf+';border:1px solid '+t.bd+'"><div class="step-n" style="background:'+s.c+'">'+s.n+'</div><div><h3 style="color:'+t.tx+'">'+s.t+'</h3><p style="color:'+t.t2+'">'+s.d+'</p></div></div>').join('');
+
+  // TM Flow
+  const tmFl=document.getElementById('tm-flow');
+  if(tmFl)tmFl.innerHTML=[
+    {n:'1',c:t.ac,t:'Registriere dich als Tagesmutter',d:'Wähle "Ich bin Tagesmutter" — du bekommst sofort deinen persönlichen Code.'},
+    {n:'2',c:'#C47852',t:'Lade Eltern ein',d:'Teile deinen Code per WhatsApp oder Email. Eltern registrieren sich und legen das Kinderprofil an.'},
+    {n:'3',c:'#6B9A7A',t:'Eltern verknüpfen ihr Kind',d:'Code eingeben — fertig. Das Kind erscheint in deinem Dashboard mit allen relevanten Infos.'}
+  ].map(s=>'<div class="step" style="background:'+t.sf+';border:1px solid '+t.bd+'"><div class="step-n" style="background:'+s.c+'">'+s.n+'</div><div><h3 style="color:'+t.tx+'">'+s.t+'</h3><p style="color:'+t.t2+'">'+s.d+'</p></div></div>').join('');
+}
 
 A();
 // Reveal nav after intro
