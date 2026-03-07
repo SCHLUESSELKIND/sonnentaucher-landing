@@ -408,6 +408,7 @@ function switchAud(a){
     document.getElementById('d4').textContent='Kein Haken. Die Grundversion ist kostenlos — für immer.';
   }
   applyTmTheme(t);
+  A(); // Re-render pricing based on currentAud
 }
 
 function applyTmTheme(t){
