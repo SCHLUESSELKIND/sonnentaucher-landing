@@ -138,7 +138,7 @@ footer a{opacity:.35;text-decoration:none;margin:0 8px;font-size:10px}
 <h2 class="fu d1" id="hh">Euer Kind verdient, dass <em id="he">alle Bescheid wissen.</em></h2>
 <p class="fu d2" id="hp">Die eine App, in der alles über euer Kind steht — sichtbar für Mama, Papa, Oma und alle, die es betreuen.</p>
 <a href="https://app.sonnentaucher.app" class="bb fu d3" id="hb">Jetzt registrieren — kostenlos</a>
-<p class="hero-note fu d4" id="hn">Kein Download. Kein Abo. In 2 Minuten startklar.</p>
+<p class="hero-note fu d4" id="hn">30 Tage kostenlos. Kein Download. In 2 Minuten startklar.</p>
 </section>
 
 <!-- Audience Toggle -->
@@ -180,7 +180,7 @@ footer a{opacity:.35;text-decoration:none;margin:0 8px;font-size:10px}
 <section>
 <div class="sl" id="l3">So einfach geht's</div>
 <h2 class="st" id="t3">In 2 Minuten startklar. Versprochen.</h2>
-<p class="sd" id="d3">Kein App Store, kein Download, kein Abo. Öffnen, anmelden, loslegen.</p>
+<p class="sd" id="d3">Kein App Store, kein Download. Öffnen, anmelden, 30 Tage kostenlos testen.</p>
 <div class="steps" id="steps"></div>
 </section>
 
@@ -226,8 +226,8 @@ footer a{opacity:.35;text-decoration:none;margin:0 8px;font-size:10px}
 
 <section id="start">
 <div class="sl" id="l4">Preise</div>
-<h2 class="st" id="t4">Starte kostenlos. Upgrade wenn du mehr brauchst.</h2>
-<p class="sd" id="d4">Kein Haken. Die Grundversion ist kostenlos — für immer.</p>
+<h2 class="st" id="t4">Ein Plan. Alles drin. 1. Monat kostenlos.</h2>
+<p class="sd" id="d4">Alle Features für die ganze Familie. Dann €4,99/Mo.</p>
 <div class="pricing" id="prices"></div>
 </section>
 
@@ -331,39 +331,20 @@ document.getElementById('steps').innerHTML=[
 {n:'4',c:'#2D3E50',t:'Startbildschirm',d:'Safari → Teilen → "Zum Home-Bildschirm".',m:'☀️ Fertig!'}
 ].map(s=>`<div class="step" style="background:${t.sf};border:1px solid ${t.bd}"><div class="step-n" style="background:${s.c}">${s.n}</div><div><h3 style="color:${t.tx}">${s.t}</h3><p style="color:${t.t2}">${s.d}</p><div class="tm" style="color:${t.ac}">${s.m}</div></div></div>`).join('');
 
-// PRICING
-document.getElementById('prices').innerHTML= currentAud === 'tm' ? `
-<div class="pc" style="background:${t.sf};border:1px solid ${t.bd}">
-<div class="tag" style="background:${t.al};color:${t.t2}">Free ☀️</div>
-<div class="num" style="color:${t.tx}">€0<span>/Monat</span></div>
-<p class="desc" style="color:${t.t2}">Zum Ausprobieren</p>
-<ul><li style="color:${t.ac}">Bis 2 Kinder</li><li style="color:${t.ac}">Tages-Dashboard</li><li style="color:${t.ac}">Check-in & Protokoll</li><li style="color:${t.ac}">Tagesberichte</li></ul>
-<a href="https://app.sonnentaucher.app" class="act" style="background:${t.al};color:${t.tx}">Kostenlos starten</a>
-</div>
-<div class="pc" style="background:${t.sf};border:2px solid ${t.ac}">
-<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#C47852,${t.ac},#BFA16C)"></div>
-<div class="tag" style="background:${t.al};color:${t.ac}">Tagesmutter Pro 🏠</div>
-<div class="num" style="color:${t.tx}">€9,99<span>/Mo</span></div>
-<p class="desc" style="color:${t.t2}">Professionelle Tagespflege</p>
-<ul><li style="color:${t.ac}">Bis 5 Kinder</li><li style="color:${t.ac}">PDF Monatsprotokoll</li><li style="color:${t.ac}">Anwesenheitsliste + EÜR</li><li style="color:${t.ac}">Betriebskostenpauschale</li><li style="color:${t.ac}">Unfallprotokoll</li></ul>
-<a href="https://app.sonnentaucher.app" class="act" style="background:${t.bb};color:${t.bt}">Tagespflege Pro starten 🏠</a>
-<p style="font-family:var(--h);font-size:12px;color:${t.ac};margin-top:5px">Pro Tagespflege, nicht pro Kind.</p>
-</div>` : `
-<div class="pc" style="background:${t.sf};border:1px solid ${t.bd}">
-<div class="tag" style="background:${t.al};color:${t.t2}">Free ☀️</div>
-<div class="num" style="color:${t.tx}">€0<span>/Monat</span></div>
-<p class="desc" style="color:${t.t2}">Zum Starten</p>
-<ul><li style="color:${t.ac}">1 Kind · 2 Mitglieder</li><li style="color:${t.ac}">Kalender + Übergabe</li><li style="color:${t.ac}">To-Dos · Wiki (7 Tage)</li></ul>
-<a href="https://app.sonnentaucher.app" class="act" style="background:${t.al};color:${t.tx}">Jetzt registrieren</a>
-</div>
-<div class="pc" style="background:${t.sf};border:2px solid ${t.ac}">
+// PRICING — Single plan, 1. Monat kostenlos
+const tmFeatures = currentAud === 'tm' ? `<li style="color:${t.ac}">Bis 5 Kinder betreuen</li><li style="color:${t.ac}">Büro: EÜR, Anwesenheit, PDF</li><li style="color:${t.ac}">Medikamenten- & Unfallprotokoll</li><li style="color:${t.ac}">Übergabe-System mit Eltern</li><li style="color:${t.ac}">Ausstattung & Schließtage</li>` : `<li style="color:${t.ac}">Unbegrenzt Kinder & Mitglieder</li><li style="color:${t.ac}">Kalender, Übergabe, To-Dos</li><li style="color:${t.ac}">Tagesmutter-Integration</li><li style="color:${t.ac}">Wiki, PDF-Export, Push</li><li style="color:${t.ac}">ICS-Import & mehr</li>`;
+document.getElementById('prices').innerHTML=`
+<div class="pc" style="background:${t.sf};border:2px solid ${t.ac};max-width:340px;margin:0 auto">
 <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,${t.ac},#BFA16C,#D4847A)"></div>
 <div class="tag" style="background:${t.al};color:${t.ac}">Pro ✨</div>
-<div class="num" style="color:${t.tx}">€4,99<span>/Mo</span></div>
-<p class="desc" style="color:${t.t2}">Ganze Familie</p>
-<ul><li style="color:${t.ac}">Unbegrenzt Kinder</li><li style="color:${t.ac}">Unbegrenzt Mitglieder</li><li style="color:${t.ac}">Alle Features + Wiki</li><li style="color:${t.ac}">PDF-Export & Push</li></ul>
-<a href="https://buy.stripe.com/14AdR39Xe2H02ve0pA63K05" class="act" style="background:${t.bb};color:${t.bt}">Pro starten ✨</a>
-<p style="font-family:var(--h);font-size:12px;color:${t.ac};margin-top:5px">Pro Familie, nicht pro Person.</p>
+<div style="text-align:center;margin:8px 0 4px">
+<span style="font-family:var(--h);font-size:16px;color:${t.ac};font-weight:600;text-decoration:line-through;opacity:.5">€4,99/Mo</span>
+</div>
+<div class="num" style="color:${t.tx}">€0<span> erster Monat</span></div>
+<p class="desc" style="color:${t.t2}">Dann €4,99/Monat · Jederzeit kündbar</p>
+<ul>${tmFeatures}</ul>
+<a href="https://app.sonnentaucher.app" class="act" style="background:${t.bb};color:${t.bt}">30 Tage kostenlos starten ☀️</a>
+<p style="font-family:var(--h);font-size:12px;color:${t.ac};margin-top:5px">Pro Familie, nicht pro Person. Keine Kreditkarte nötig.</p>
 </div>`;
 
 const fb=document.getElementById('fb');fb.style.background=t.bb;fb.style.color=t.bt;fb.style.boxShadow='0 4px 18px '+t.ac+'1A';
@@ -390,22 +371,22 @@ function switchAud(a){
     document.getElementById('hh').innerHTML='Tagespflege. <em id="he" style="color:'+t.ac+'">Ohne Papierkram.</em>';
     document.getElementById('hp').textContent='Anwesenheit, Berichte, Steuern — sonnentaucher erledigt deine Dokumentation, während du dich um die Kinder kümmerst.';
     document.getElementById('hb').textContent='Tagespflege starten — kostenlos';
-    document.getElementById('hn').textContent='Bis 2 Kinder kostenlos. Kein Download nötig.';
+    document.getElementById('hn').textContent='30 Tage kostenlos. Kein Download nötig.';
     document.getElementById('fh').textContent='Bereit für weniger Papierkram?';
     document.getElementById('fp').textContent='Starte deine digitale Tagespflege in 2 Minuten.';
     document.getElementById('fb').textContent='Tagespflege starten ☀️';
-    document.getElementById('t4').textContent='Zwei Pläne. Ein Ziel: Weniger Papierkram.';
-    document.getElementById('d4').textContent='Starte kostenlos mit bis zu 2 Kindern. Alles Weitere im Pro-Plan.';
+    document.getElementById('t4').textContent='Ein Plan. Alles drin. 1. Monat kostenlos.';
+    document.getElementById('d4').textContent='Keine versteckten Kosten. Alle Features sofort. Dann €4,99/Mo.';
   } else {
     document.getElementById('hh').innerHTML='Euer Kind verdient, dass <em id="he" style="color:'+t.ac+'">alle Bescheid wissen.</em>';
     document.getElementById('hp').textContent='Die eine App, in der alles über euer Kind steht — sichtbar für Mama, Papa, Oma und alle, die es betreuen.';
     document.getElementById('hb').textContent='Jetzt registrieren — kostenlos';
-    document.getElementById('hn').textContent='Kein Download. Kein Abo. In 2 Minuten startklar.';
+    document.getElementById('hn').textContent='30 Tage kostenlos. Kein Download. In 2 Minuten startklar.';
     document.getElementById('fh').textContent='Bereit einzutauchen?';
     document.getElementById('fp').textContent='Erstelle in 2 Minuten das Profil eures Kindes.';
     document.getElementById('fb').textContent='Registrieren — kostenlos ☀️';
-    document.getElementById('t4').textContent='Starte kostenlos. Upgrade wenn du mehr brauchst.';
-    document.getElementById('d4').textContent='Kein Haken. Die Grundversion ist kostenlos — für immer.';
+    document.getElementById('t4').textContent='Ein Plan. Alles drin. 1. Monat kostenlos.';
+    document.getElementById('d4').textContent='Alle Features für die ganze Familie. Dann €4,99/Mo.';
   }
   applyTmTheme(t);
   A(); // Re-render pricing based on currentAud
